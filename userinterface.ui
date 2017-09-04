@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1548</width>
+    <height>819</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>Automatic Human Emotion Detection</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>lense.png</normaloff>lense.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <widget class="QLCDNumber" name="lcd5">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>320</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="numDigits">
+     <number>3</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcd1">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>30</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="numDigits">
+     <number>3</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcd2">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>100</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="numDigits">
+     <number>3</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcd3">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>180</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="numDigits">
+     <number>3</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcd4">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>250</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="numDigits">
+     <number>3</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="neutralLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>330</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Neutral</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="angerLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>50</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Anger</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="disgustLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>120</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Disgust</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="happyLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>260</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Happy</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fearLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>190</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fear</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcd6">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>390</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="numDigits">
+     <number>3</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcd7">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>460</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="numDigits">
+     <number>3</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+    <property name="intValue" stdset="0">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sadLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>400</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sad</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="surpriseLabel">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>470</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Surprise</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startVideoButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>630</y>
+      <width>351</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start Video</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="endVideoButton">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>630</y>
+      <width>351</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>End Video</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quitVideoButton">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>630</y>
+      <width>351</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="emojiLabel">
+    <property name="geometry">
+     <rect>
+      <x>1250</x>
+      <y>550</y>
+      <width>231</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string>Emoji</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="videoLabel">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>40</y>
+      <width>791</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="text">
+     <string>Video</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1548</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+   </widget>
+   <addaction name="menuMenu"/>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
