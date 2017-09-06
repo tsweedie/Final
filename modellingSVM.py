@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+import pandas as pd
+import seaborn as sb
 import os
 import shutil
 from myFeatures import FeatureExtraction
@@ -8,182 +10,62 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, average_precision_score
 import pickle
 
+from sklearn.cross_validation import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+#MENTION LABELS NB NB
 class Tester():
-    def load_images_from_folder(self, folder):
-        print("Load images from CK+")
-        images = []
-        for filename in os.listdir(folder):
-            if filename.endswith(".png"):
-                img = cv2.imread(os.path.join(folder, filename))
-                if img is not None:
-                    images.append(img)
-        return images
-
-    def run_viola(self, size):
-        print("Running Viola Jones on Images")
-
-        pathAngry = os.path.abspath('Data/Angry')
-        pathDisgust = os.path.abspath('Data/Disgust')
-        pathFear = os.path.abspath('Data/Fear')
-        pathHappy = os.path.abspath('Data/Happy')
-        pathNeutral = os.path.abspath('Data/Neutral')  # or path
-        pathSad = os.path.abspath('Data/Sad')
-        pathSurprise = os.path.abspath('Data/Surprise')
-
-        Angry = self.load_images_from_folder(pathAngry)
-        Disgust = self.load_images_from_folder(pathDisgust)
-        Fear = self.load_images_from_folder(pathFear)
-        Happy = self.load_images_from_folder(pathHappy)
-        Neutral = self.load_images_from_folder(pathNeutral)
-        Sad = self.load_images_from_folder(pathSad)
-        Surprise = self.load_images_from_folder(pathSurprise)
-
-        current_directory = os.getcwd()
-        shutil.rmtree(current_directory + '/Data/Viola')
-
-        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/angViola')):
-            os.makedirs(os.path.join(current_directory, r'Data/Viola/angViola'))
-        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/disViola')):
-            os.makedirs(os.path.join(current_directory, r'Data/Viola/disViola'))
-        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/fearViola')):
-            os.makedirs(os.path.join(current_directory, r'Data/Viola/fearViola'))
-        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/hapViola')):
-            os.makedirs(os.path.join(current_directory, r'Data/Viola/hapViola'))
-        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/neuViola')):
-            os.makedirs(os.path.join(current_directory, r'Data/Viola/neuViola'))
-        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/sadViola')):
-            os.makedirs(os.path.join(current_directory, r'Data/Viola/sadViola'))
-        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/surViola')):
-            os.makedirs(os.path.join(current_directory, r'Data/Viola/surViola'))
-
-        angViola, disViola, fearViola, hapViola, neuViola, sadViola, surViola = [], [], [], [], [], [], []
-        for i in range(0, size):  # change
-            if i < len(Angry):
-                v1, image = self.ahed.viola_jones(Angry[i])
-                angViola.append(v1)
-                cv2.imwrite(current_directory + "Data/Viola/angViola/angry" + str(i) + ".png", v1)
-            if i < len(Disgust):
-                v2, image = self.ahed.viola_jones(Disgust[i])
-                disViola.append(v2)
-                cv2.imwrite(current_directory + "Data/Viola/disViola/disgust" + str(i) + ".png", v2)
-            if i < len(Fear):
-                v3, image = self.ahed.viola_jones(Fear[i])
-                fearViola.append(v3)
-                cv2.imwrite(current_directory + "Data/Viola/fearViola/fear" + str(i) + ".png", v3)
-            if i < len(Happy):
-                v4, image = self.ahed.viola_jones(Happy[i])
-                hapViola.append(v4)
-                cv2.imwrite(current_directory + "Data/Viola/hapViola/happy" + str(i) + ".png", v4)
-            if i < len(Neutral):
-                v5, image = self.ahed.viola_jones(Neutral[i])
-                neuViola.append(v5)
-                cv2.imwrite(current_directory + "Data/Viola/neuViola/neutral" + str(i) + ".png", v5)
-            if i < len(Sad):
-                v6, image = self.ahed.viola_jones(Sad[i])
-                sadViola.append(v6)
-                cv2.imwrite(current_directory + "Data/Viola/sadViola/sad" + str(i) + ".png", v6)
-            if i < len(Surprise):
-                v7, image = self.ahed.viola_jones(Surprise[i])
-                surViola.append(v7)
-                cv2.imwrite(current_directory + "Data/Viola/surViola/surprise" + str(i) + ".png", v7)
-
-        return angViola, disViola, fearViola, hapViola, neuViola, sadViola, surViola
-
-    def run_hog(self, angViola, disViola, fearViola, hapViola, neuViola, sadViola, surViola):
-        print("Running Hog on Viola Images")
-        angTrain, disTrain, fearTrain, hapTrain, neuTrain, sadTrain, surTrain = [], [], [], [], [], [], []
-        angLabel, disLabel, fearLabel, hapLabel, neuLabel, sadLabel, surLabel = [], [], [], [], [], [], []
-
-        for i in range(0, 20):
-            if i < len(angViola):
-                angTrain.append(self.ahed.hog_opencv(angViola[i]))
-                angLabel.append(1)
-            if i < len(disViola):
-                disTrain.append(self.ahed.hog_opencv(disViola[i]))
-                disLabel.append(2)
-            if i < len(fearViola):
-                fearTrain.append(self.ahed.hog_opencv(fearViola[i]))
-                fearLabel.append(3)
-            if i < len(hapViola):
-                hapTrain.append(self.ahed.hog_opencv(hapViola[i]))
-                hapLabel.append(4)
-            if i < len(neuViola):
-                neuTrain.append(self.ahed.hog_opencv(neuViola[i]))
-                neuLabel.append(5)
-            if i < len(sadViola):
-                sadTrain.append(self.ahed.hog_opencv(sadViola[i]))
-                sadLabel.append(6)
-            if i < len(surViola):
-                surTrain.append(self.ahed.hog_opencv(surViola[i]))
-                surLabel.append(7)
-
-        angTest, disTest, fearTest, hapTest, neuTest, sadTest, surTest = [], [], [], [], [], [], []
-        angLabel2, disLabel2, fearLabel2, hapLabel2, neuLabel2, sadLabel2, surLabel2 = [], [], [], [], [], [], []
-        for i in range(20, 84):
-            if i < len(angViola):
-                angTest.append(self.ahed.hog_opencv(angViola[i]))
-                angLabel2.append(1)
-            if i < len(disViola):
-                disTest.append(self.ahed.hog_opencv(disViola[i]))
-                disLabel2.append(2)
-            if i < len(fearViola):
-                fearTest.append(self.ahed.hog_opencv(fearViola[i]))
-                fearLabel2.append(3)
-            if i < len(hapViola):
-                hapTest.append(self.ahed.hog_opencv(hapViola[i]))
-                hapLabel2.append(4)
-            if i < len(neuViola):
-                neuTest.append(self.ahed.hog_opencv(neuViola[i]))
-                neuLabel2.append(5)
-            if i < len(sadViola):
-                sadTest.append(self.ahed.hog_opencv(sadViola[i]))
-                sadLabel2.append(6)
-            if i < len(surViola):
-                surTest.append(self.ahed.hog_opencv(surViola[i]))
-                surLabel2.append(7)
-
-        train = angTrain + disTrain + fearTrain + hapTrain + neuTrain + sadTrain + surTrain
-        test = angTest + disTest + fearTest + hapTest + neuTest + sadTest + surTest
-        labelTrain = angLabel + disLabel + fearLabel + hapLabel + neuLabel + sadLabel + surLabel
-        labelTest = angLabel2 + disLabel2 + fearLabel2 + hapLabel2 + neuLabel2 + sadLabel2 + surLabel2
-
-        return train, test, labelTrain, labelTest
 
     def main(self):
         self.ahed = FeatureExtraction()
-        angViola, disViola, fearViola, hapViola, neuViola, sadViola, surViola = self.run_viola(84)  # 84 = max images in folder
-        train, test, labelTrain, labelTest = self.run_hog(angViola, disViola, fearViola, hapViola, neuViola, sadViola, surViola)
-
+        path = 'dataCsv.csv'
+        dataset = pd.read_csv(path)
+        #dataset.head()
+        #sb.countplot(x='diagnosis',data=dataset, palette='hls')
+        #dataset.isnull().sum()
+        X = dataset.ix[:,1:].values
+        y = dataset.ix[:,0].values
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.30, stratify = y, random_state=40)
         # BEFORE SVM TRAINING & GRID SEARCH:
+        param_grid = [
+        	{'C': [1, 10, 100, 1000], 'kernel': ['linear']},
+        	{'C': [1, 10, 100, 1000], 'gamma': [0.001, 0.0001], 'kernel': ['rbf']},
+        	 ]
+        #C_range = np.logspace(-5, 15,num=21,base = 10.0)#, 6)
+        #print(C_range)
+        #gamma_range = np.logspace(-15, 3, num=19,base = 10.0)#, 6)
+        #print(gamma_range)
         #param_grid = [
-        #	{'C': [1, 10, 100, 1000], 'kernel': ['linear']},
-        #	{'C': [1, 10, 100, 1000], 'gamma': [0.001, 0.0001], 'kernel': ['rbf']},
-        #	 ]
-        #svc = svm.SVC(probability=True)  # verbose=1)# I will also advice using verbose to see behavior of your svm and grid search
-        #print("SVM Grid Search")
-        #clf = GridSearchCV(svc, param_grid)  # ,verbose=1)
+        #   {'C': C_range.tolist(), 'kernel': ['linear']},
+        #   {'C': C_range.tolist(), 'gamma': gamma_range.tolist(), 'kernel': ['rbf']},
+        #]
+        svc = svm.SVC(probability=True)  # verbose=1)# I will also advice using verbose to see behavior of your svm and grid search
+        print("SVM Grid Search")#easy.p & grid.py ??
+        clf = GridSearchCV(svc, param_grid)  # ,verbose=1)
+        clf = clf.fit(X_train, y_train)
+        print('Best score for data1:', clf.best_score_)
+        print('Best C:', clf.best_estimator_.C)
+        print('Best Kernel:', clf.best_estimator_.kernel)
+        print('Best Gamma:', clf.best_estimator_.gamma)
+        print("SVM Train")
 
-        #print("SVM Train")
-        #clf = clf.fit(train, labelTrain)
-        #filename = 'finalized_model.sav'
-        #pickle.dump(clf, open(filename, 'wb'))
-        #print("SVM Predict")
-        #predict = clf.predict(test)
+        filename = 'finalized_model.sav'
+        pickle.dump(clf, open(filename, 'wb'))
 
         #AFTER SVM TRAINING:
-        clf = pickle.load(open('finalized_model.sav', 'rb'))
+        #clf = pickle.load(open('finalized_model.sav', 'rb'))
         print("SVM Predict:")
-        predict = clf.predict(test)
+        y_pred = clf.predict(X_test)
         print("SVM Best Estimator:")
         print(clf.best_estimator_)
         print("SVM Grid Scores:")
         print(clf.grid_scores_)
         print("SVM Classification Report:")
-        print(classification_report(labelTest, predict, target_names=["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]))
+        print(classification_report(y_test, y_pred, target_names=["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]))
         print("SVM Confusion Matrix:")
-        print(confusion_matrix(labelTest, predict, labels=range(7)))
+        print(confusion_matrix(y_test, y_pred, labels=range(7)))
         print("SVM Accuracy Score:")
-        print(accuracy_score(labelTest, predict, normalize=True)) #normalize=False))
+        print(accuracy_score(y_test, y_pred, normalize=True)) #normalize=False))
 
         # JUNK:
         # print(sorted(clf.cv_results_.keys()))
