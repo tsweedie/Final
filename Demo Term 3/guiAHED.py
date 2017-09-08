@@ -21,7 +21,7 @@ class Demo(QtGui.QMainWindow, Ui_MainWindow):
         self.quitVideoButton.clicked.connect(self.quitCapture)
 
         pixmap = QtGui.QPixmap('lense.png')
-        pixmap = pixmap.scaled(256, 256)
+        pixmap = pixmap.scaled(200, 200)
         self.emojiLabel.setPixmap(pixmap)
 
         pixmapVideo = QtGui.QPixmap('lense.png')
@@ -46,7 +46,7 @@ class Demo(QtGui.QMainWindow, Ui_MainWindow):
         while (self.capturing):
             ret, frame = cap.read()
             # where all the testing functions go:
-            if fps == 5 and ret:  # ret == true
+            if fps == 1 and ret:  # ret == true
                 fps = 0
                 scaled, frame = ahed.viola_jones(
                     frame)  # NB add means of cancelling out false positives(detecting nose as eye)
@@ -55,7 +55,7 @@ class Demo(QtGui.QMainWindow, Ui_MainWindow):
                     hog = ahed.hog_opencv(scaled)
                     result = loaded_model.predict(np.array([hog]))
                     pixmap = QtGui.QPixmap(emojis[result[0]])
-                    pixmap = pixmap.scaled(256, 256)
+                    pixmap = pixmap.scaled(200, 200)
                     self.emojiLabel.setPixmap(pixmap)
                     print(target_names[result[0] - 1])
                     result_proba = loaded_model.predict_proba(np.array([hog]))
