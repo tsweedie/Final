@@ -1,0 +1,22 @@
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The four stages for facial expression recognition\relax }}{4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Histogram Equalization\relax }}{5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Preprocessed Image with Oval Masks\relax }}{5}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Architecture of an artificial neuron and a multilayered neural network \relax }}{7}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Integral Image\citep {viola}\relax }}{10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Haar-like features\citep {viola}\relax }}{11}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces HOG feature extraction chain\cite {hog}\relax }}{12}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Region of interest\relax }}{12}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Image window\relax }}{12}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces One dimentional masks,(a)X-direction and (b) Y-direction\relax }}{13}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Image window\relax }}{13}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces The result of a one dimensional mask applied in the X-direction\relax }}{13}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The result of a one dimensional mask applied in the Y-direction\relax }}{13}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces $16 \times 16$ pixel image\relax }}{14}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Image divided into $4 \times 4$ pixel cells\relax }}{14}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces $\theta $ as an angle\relax }}{14}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Unsigned gradients with 9 orientation bins\relax }}{14}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Blocks of $B_x \times B_y$ cells\relax }}{15}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Block A \& B with a 50\% overlap\relax }}{15}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Cell histograms for contrast normalization in a block\relax }}{15}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces High level view of System\relax }}{16}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Low level view of System\relax }}{17}
