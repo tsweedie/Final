@@ -46,8 +46,8 @@ class Demo(QtGui.QMainWindow, Ui_MainWindow):
         while (self.capturing):
             ret, frame = cap.read()
             # where all the testing functions go:
-            if fps == 1 and ret:  # ret == true
-                fps = 0
+            if ++fps % 10 == 0 and ret:  # ret == true
+                #fps = 0
                 scaled, frame = ahed.viola_jones(
                     frame)  # NB add means of cancelling out false positives(detecting nose as eye)
 
@@ -68,13 +68,13 @@ class Demo(QtGui.QMainWindow, Ui_MainWindow):
                     self.lcd5.display(probabilities[2])#[4])
                     #self.lcd6.display(probabilities[5])
                     self.lcd7.display(probabilities[3])#[6])
-
+		cv2.waitKey(1)
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 img = QtGui.QImage(frame, frame.shape[1], frame.shape[0], QtGui.QImage.Format_RGB888)
                 pixmapVideo = QtGui.QPixmap.fromImage(img)
                 self.videoLabel.setPixmap(pixmapVideo)
                 QtGui.QApplication.processEvents()
-            fps = fps + 1
+            #fps = fps + 1
 
     def endCapture(self):
         print "pressed End"
