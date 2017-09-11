@@ -30,7 +30,6 @@ class FeatureExtraction():
                 H = h
         # cater for when there are no faces in the image "max_size = 0"
         if max_size != 0:
-
             cv2.rectangle(image, (X, Y), (X + W, Y + H), (192, 192, 192), 2)
             roi = image[Y:Y + H, X:X + W]
             gray = cv2.cvtColor(roi, cv2.COLOR_RGB2GRAY)
