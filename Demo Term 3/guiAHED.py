@@ -9,10 +9,10 @@ qtCreatorFile = "userinterface.ui"  # Enter file here.
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 # --------------------------------------------------------------
 class Demo(QtGui.QMainWindow, Ui_MainWindow):
-    def __init__(self):  #
-        QtGui.QMainWindow.__init__(self)  #
-        Ui_MainWindow.__init__(self)  #
-        self.setupUi(self)  #
+    def __init__(self):  
+        QtGui.QMainWindow.__init__(self)  
+        Ui_MainWindow.__init__(self)  
+        self.setupUi(self)  
         self.capturing = False
         self.c = cv2.VideoCapture(0)
 
@@ -40,7 +40,7 @@ class Demo(QtGui.QMainWindow, Ui_MainWindow):
 	target_names = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise","blank"]
 	emojis = {1: 'Data/Emojis/angry.png', 2: 'Data/Emojis/disgust.png', 3: 'Data/Emojis/fear.png',
                   4: 'Data/Emojis/happy.png', 5: 'Data/Emojis/neutral.png', 6: 'Data/Emojis/sad.png',
-                  7: 'Data/Emojis/surprise.png', 8:'emoji_empty_r.png'}
+                  7: 'Data/Emojis/surprise.png', 8:'Data/Emojis/emoji_empty_r.png'}
 	pixmaps = {}
 	for key in emojis:
 	    pixmap = QtGui.QPixmap(emojis[key])
