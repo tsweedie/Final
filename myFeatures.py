@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from skimage.feature import hog
+import sys
 from skimage import img_as_float
 
 faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -16,10 +17,7 @@ class FeatureExtraction():
         faces = faceCascade.detectMultiScale(image, 1.3, 5)
 
         max_size = 0  # w*h
-        X = 0
-        Y = 0
-        W = 0
-        H = 0
+        X = Y = W = H = 0
 
         for (x, y, w, h) in faces:  # find the biggest face
             if max_size < w * h:
@@ -48,22 +46,38 @@ class FeatureExtraction():
         return scaled, image
 
         # ------------------------------------------------------------------------------
-        # ------------------------------My HOG: Gradients-----------------------------------
+        # -----------------------------------My HOG-------------------------------------
         # ------------------------------------------------------------------------------
-        # figure out how to create actual hogs using mag and orien image
+	#gradients work only on grayscale images
 
     def gx(self, scaled):
-        y, x = scaled.shape
-        gx = np.zeros(scaled.shape)
+	y, x = scaled.shape
+	scaled = np.lib.pad(scaled, 1, 'constant', constant_values=0)
+        gx = np.zeros((x,y))
+	#sobelX:
+	#[1	,0	,-1]
+        #[2	,0	,-2]
+        #[1	,0	,-1]        
         for i in range(y):
-            gx[i, :] = np.convolve(scaled[i, :], [1, 0, -1], 'same')
+	    a= np.convolve(scaled[i-1, :], [1,0, -1], 'valid')
+	    b= np.convolve(scaled[i, :], [2,0, -2], 'valid')
+	    c= np.convolve(scaled[i+1, :], [1,0, -1], 'valid')
+	    gx[i, :] = np.sum([a,b,c], axis=0)
         return gx
 
     def gy(self, scaled):
-        y, x = scaled.shape
-        gy = np.zeros(scaled.shape)
+	y, x = scaled.shape
+	scaled =np.lib.pad(scaled, 1, 'constant', constant_values=0)
+        gy = np.zeros((x,y))
+	#sobelY:
+	#[-1	,-2	,-1]
+        #[0	,0	,0]
+        #[1	,2	,1]
         for j in range(x):
-            gy[:, j] = np.convolve(scaled[:, j], [1, 0, -1], 'same')
+	    a= np.convolve(scaled[:, j-1], [1,0, -1], 'valid')
+	    b= np.convolve(scaled[:, j], [2,0, -2], 'valid')
+	    c= np.convolve(scaled[:, j+1], [1,0, -1], 'valid')
+	    gy[:, j] = np.sum([a,b,c], axis=0)
         return gy
 
     def magnitude(self, gx, gy):
@@ -71,13 +85,58 @@ class FeatureExtraction():
         return magnitude
 
     def orientation(self, gx, gy):
-        orientation = (np.arctan2(gy, gx) * 180 / np.pi) % 360
+	orientation = (np.arctan2(gy, gx) /np.pi) % 2*np.pi #same output as cv2.cartToPolar
         return orientation
-        # def calculate_hog(self,bins,cell,block,winsize):
-        # return hog
 
+    def calculate_myhog(self, scaled):
+        gx = self.gx(scaled)
+    	gy = self.gy(scaled)
+
+	magnitude = self.magnitude(gx, gy) 
+	orientation = self.orientation(gx, gy)
+	bin_n = 9 # Number of bins
+    	bins = np.int32(bin_n*orientation/(2*np.pi))
+
+	bin_blocks = []
+    	mag_blocks = []
+	epsilon = sys.float_info.epsilon
+	
+	blocksize = 3
+    	cellsize = 8
+	
+	width = scaled.shape[0]	
+	height = scaled.shape[1]
+	
+	y = ((height-(cellsize*blocksize))/cellsize) + 1
+	x = ((width-(cellsize*blocksize))/cellsize) + 1 
+	count = 0
+	histograms = []
+	for i in range(0, y ,1): #loops through each block in a image(i,j)
+            	for j in range(0, x ,1):
+		    bin_block = bins[i*cellsize : i*cellsize+blocksize*cellsize,
+					j*cellsize : j*cellsize+blocksize*cellsize]
+		    mag_block = magnitude[i*cellsize : i*cellsize+blocksize*cellsize,
+					j*cellsize : j*cellsize+blocksize*cellsize]
+		    tempHists = []
+		    sumHists = np.zeros((9,))
+		    for m in range(0, blocksize*cellsize,cellsize):	#loops through each cell in a block(m,n)
+			for n in range(0, blocksize*cellsize,cellsize): 
+			    cellBin =bin_block[m :m+cellsize,n :n+cellsize]
+			    cellMag =mag_block[m :m+cellsize,n :n+cellsize]
+		    	    tempHists.append(np.bincount(cellBin.ravel(), cellMag.ravel(), bin_n))
+			    sumHists =  np.sum([sumHists, np.bincount(cellBin.ravel(), cellMag.ravel(), bin_n)], axis=0)
+			    
+		    sumHists = np.sum(sumHists)
+		    for hist in tempHists:
+			histograms.append(np.divide(hist,np.sqrt(np.add(np.square(sumHists),np.square(epsilon)))))
+		    
+            	    bin_blocks.append(bin_block)
+		    mag_blocks.append(mag_block)
+		    count = count +1
+    	hist = np.hstack(histograms)
+	return hist
         # ------------------------------------------------------------------------------
-        # -------------------------------------HOG--------------------------------------
+        # ---------------------------------OpenCV HOG-----------------------------------
         # ------------------------------------------------------------------------------
 
     def hog_opencv(self, image):
@@ -93,6 +152,17 @@ class FeatureExtraction():
         fd, hog_image = hog(image, orientations, cellSize, blockSize, blockNorm, visualize, transformSqrt,
                             featureVector)
         # cv2.imwrite('hog.jpg', hog_image)
-        # hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(0, 0.02))  # Rescale histogram for better display
-
+        # hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(0, 0.02))  
+	# Rescale histogram for better display
         return fd
+
+    def main(self):
+	
+	image = cv2.imread('lense.png')
+	img1 = cv2.resize(image, (4, 8))
+	img2 = cv2.resize(image, (4, 8))
+	roi = np.concatenate((img1, img2), axis=1)
+	scaled = cv2.cvtColor(roi, cv2.COLOR_RGB2GRAY)
+	print(self.calculate_hog(scaled, 2, 2, 9).shape)
+   
+#if __name__ == '__main__': myHog().main()
