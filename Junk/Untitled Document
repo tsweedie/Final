@@ -1,0 +1,8 @@
+        #C_range = np.logspace(-5, 15,num=21,base = 10.0)#, 6)
+        #print(C_range)
+        #gamma_range = np.logspace(-15, 3, num=19,base = 10.0)#, 6)
+        #print(gamma_range)
+        #param_grid = [
+        #   {'C': C_range.tolist(), 'kernel': ['linear']},
+        #   {'C': C_range.tolist(), 'gamma': gamma_range.tolist(), 'kernel': ['rbf']},
+        #]

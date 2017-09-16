@@ -39,24 +39,24 @@ class MineData():
         Surprise = self.load_images_from_folder(pathSurprise)
 
 	#-------------------Uncomment below for results of Viola-Jones(as Images):-------------------
-        #current_directory = os.getcwd()
-        #print(current_directory)
-        #shutil.rmtree(current_directory + '/Data/Viola')
+        current_directory = os.getcwd()
+        print(current_directory)
+        shutil.rmtree(current_directory + '/Data/Viola')
 
-        #if not os.path.exists(os.path.join(current_directory, r'Data/Viola/angViola')):
-        #    os.makedirs(os.path.join(current_directory, r'Data/Viola/angViola'))
-        #if not os.path.exists(os.path.join(current_directory, r'Data/Viola/disViola')):
-        #    os.makedirs(os.path.join(current_directory, r'Data/Viola/disViola'))
-        #if not os.path.exists(os.path.join(current_directory, r'Data/Viola/fearViola')):
-        #    os.makedirs(os.path.join(current_directory, r'Data/Viola/fearViola'))
-        #if not os.path.exists(os.path.join(current_directory, r'Data/Viola/hapViola')):
-        #    os.makedirs(os.path.join(current_directory, r'Data/Viola/hapViola'))
-        #if not os.path.exists(os.path.join(current_directory, r'Data/Viola/neuViola')):
-        #    os.makedirs(os.path.join(current_directory, r'Data/Viola/neuViola'))
-        #if not os.path.exists(os.path.join(current_directory, r'Data/Viola/sadViola')):
-        #    os.makedirs(os.path.join(current_directory, r'Data/Viola/sadViola'))
-        #if not os.path.exists(os.path.join(current_directory, r'Data/Viola/surViola')):
-        #    os.makedirs(os.path.join(current_directory, r'Data/Viola/surViola'))
+        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/angViola')):
+            os.makedirs(os.path.join(current_directory, r'Data/Viola/angViola'))
+        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/disViola')):
+            os.makedirs(os.path.join(current_directory, r'Data/Viola/disViola'))
+        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/fearViola')):
+            os.makedirs(os.path.join(current_directory, r'Data/Viola/fearViola'))
+        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/hapViola')):
+            os.makedirs(os.path.join(current_directory, r'Data/Viola/hapViola'))
+        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/neuViola')):
+            os.makedirs(os.path.join(current_directory, r'Data/Viola/neuViola'))
+        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/sadViola')):
+            os.makedirs(os.path.join(current_directory, r'Data/Viola/sadViola'))
+        if not os.path.exists(os.path.join(current_directory, r'Data/Viola/surViola')):
+            os.makedirs(os.path.join(current_directory, r'Data/Viola/surViola'))
 
 	
         print("Running Viola Jones on Images")
@@ -65,31 +65,33 @@ class MineData():
             if i < len(Angry):
                 v1, image = self.ahed.viola_jones(Angry[i])
                 angViola.append(v1)
-                #cv2.imwrite(current_directory + "/Data/Viola/angViola/angry" + str(i) + ".png", v1)
+                cv2.imwrite(current_directory + "/Data/Viola/angViola/angry" + str(i) + ".png", v1)
             if i < len(Disgust):
                 v2, image = self.ahed.viola_jones(Disgust[i])
                 disViola.append(v2)
-                #cv2.imwrite(current_directory + "/Data/Viola/disViola/disgust" + str(i) + ".png", v2)
+                cv2.imwrite(current_directory + "/Data/Viola/disViola/disgust" + str(i) + ".png", v2)
             if i < len(Fear):
                 v3, image = self.ahed.viola_jones(Fear[i])
                 fearViola.append(v3)
-                #cv2.imwrite(current_directory + "/Data/Viola/fearViola/fear" + str(i) + ".png", v3)
+                cv2.imwrite(current_directory + "/Data/Viola/fearViola/fear" + str(i) + ".png", v3)
             if i < len(Happy):
                 v4, image = self.ahed.viola_jones(Happy[i])
                 hapViola.append(v4)
-                #cv2.imwrite(current_directory + "/Data/Viola/hapViola/happy" + str(i) + ".png", v4)
+                cv2.imwrite(current_directory + "/Data/Viola/hapViola/happy" + str(i) + ".png", v4)
             if i < len(Neutral):
                 v5, image = self.ahed.viola_jones(Neutral[i])
                 neuViola.append(v5)
-                #cv2.imwrite(current_directory + "/Data/Viola/neuViola/neutral" + str(i) + ".png", v5)
+                cv2.imwrite(current_directory + "/Data/Viola/neuViola/neutral" + str(i) + ".png", v5)
             if i < len(Sad):
                 v6, image = self.ahed.viola_jones(Sad[i])
                 sadViola.append(v6)
-                #cv2.imwrite(current_directory + "/Data/Viola/sadViola/sad" + str(i) + ".png", v6)
+                cv2.imwrite(current_directory + "/Data/Viola/sadViola/sad" + str(i) + ".png", v6)
             if i < len(Surprise):
+		#if(i == 53):
+		 #   cv2.imwrite("wtf.png",Surprise[i])
                 v7, image = self.ahed.viola_jones(Surprise[i])
                 surViola.append(v7)
-                #cv2.imwrite(current_directory + "/Data/Viola/surViola/surprise" + str(i) + ".png", v7)
+                cv2.imwrite(current_directory + "/Data/Viola/surViola/surprise" + str(i) + ".png", v7)
 	#-----------------------------------end of Viola-Jones-------------------------------------------
         print("Running Hog on Viola Images")
         featureVectors = []

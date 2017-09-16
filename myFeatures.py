@@ -38,10 +38,10 @@ class FeatureExtraction():
             #for ex, ey, ew, eh in eyes:
             #    cv2.rectangle(roi, (ex, ey), (ex + ew, ey + eh), (0, 0, 255), 2)
 
-            circle_img = np.zeros((height, width), np.uint8)
-            cv2.ellipse(circle_img, (height / 2, width / 2), (24, 28), 0, 0, 360, 255, thickness=-1)
-            masked_data = cv2.bitwise_and(scaled, scaled, mask=circle_img)
-            scaled = masked_data
+            #circle_img = np.zeros((height, width), np.uint8)
+            #cv2.ellipse(circle_img, (height / 2, width / 2), (24, 28), 0, 0, 360, 255, thickness=-1)
+            #masked_data = cv2.bitwise_and(scaled, scaled, mask=circle_img)
+            #scaled = masked_data
         #return scaled
         return scaled, image
 
@@ -101,8 +101,8 @@ class FeatureExtraction():
     	mag_blocks = []
 	epsilon = sys.float_info.epsilon
 	
-	blocksize = 3
-    	cellsize = 8
+	blocksize = 2
+    	cellsize = 4
 	
 	width = scaled.shape[0]	
 	height = scaled.shape[1]
@@ -143,7 +143,7 @@ class FeatureExtraction():
 
         image = img_as_float(image)  # convert unit8 tofloat64 ... dtype
         orientations = 9
-        cellSize = (8, 8)  # pixels_per_cell
+        cellSize = (4,4)  # pixels_per_cell
         blockSize = (3, 3)  # cells_per_block
         blockNorm = 'L1-sqrt'  # {'L1', 'L1-sqrt', 'L2', 'L2-Hys'}
         visualize = True  # Also return an image of the HOG.
