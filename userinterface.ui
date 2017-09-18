@@ -30,7 +30,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>lense.png</normaloff>lense.png</iconset>
+    <normaloff>Files/lense.png</normaloff>Files/lense.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="cursor">
