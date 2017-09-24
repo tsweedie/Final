@@ -4,8 +4,9 @@ import numpy as np
 from skimage.feature import hog
 from skimage import img_as_float
 
-faceCascade = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml')
+#faceCascade = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml')
 eyeCascade = cv2.CascadeClassifier('Files/haarcascade_eye.xml')
+faceCascade = cv2.CascadeClassifier('Files/haarcascade_frontalface_alt.xml')
 
 
 class FeatureExtraction():
@@ -98,7 +99,7 @@ class FeatureExtraction():
         mag_blocks = []
         epsilon = sys.float_info.epsilon
 
-        blocksize = 2
+        blocksize = 3 #2
         cellsize = 4
 
         width = scaled.shape[0]
@@ -154,11 +155,14 @@ class FeatureExtraction():
 
     def main(self):
         image = cv2.imread('Files/lense.png')
-        img1 = cv2.resize(image, (4, 8))
-        img2 = cv2.resize(image, (4, 8))
-        roi = np.concatenate((img1, img2), axis=1)
-        scaled = cv2.cvtColor(roi, cv2.COLOR_RGB2GRAY)
-        self.calculate_myhog(scaled)
+        #img1 = cv2.resize(image, (4, 8))
+        #img2 = cv2.resize(image, (4, 8))
+        #roi = np.concatenate((img1, img2), axis=1)
+        #scaled = cv2.cvtColor(roi, cv2.COLOR_RGB2GRAY)
+	scaled, image = self.viola_jones(image)
+        print(self.calculate_myhog(scaled).shape)
+	fd = self.hog_opencv(scaled)
+	print(fd.shape)
 
 
 if __name__ == '__main__': FeatureExtraction().main()
