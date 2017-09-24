@@ -1,0 +1,342 @@
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject11\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject11\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject11\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject11\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject11\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject11\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject11\Surprise
+
+######################################################################
+##########################~ subject11 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       1.00      1.00      1.00         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       1.00      1.00      1.00         1
+      Happy       1.00      1.00      1.00         1
+    Neutral       1.00      1.00      1.00         1
+        Sad       1.00      1.00      1.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       1.00      1.00      1.00         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 1 0 0 0 0 0]
+ [0 0 1 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 1 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 1.0
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject22\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject22\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject22\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject22\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject22\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject22\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject22\Surprise
+
+######################################################################
+##########################~ subject22 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       1.00      1.00      1.00         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       0.00      0.00      0.00         1
+      Happy       0.50      1.00      0.67         1
+    Neutral       0.50      1.00      0.67         1
+        Sad       0.00      0.00      0.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       0.57      0.71      0.62         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 1 0 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.714285714286
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject37\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject37\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject37\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject37\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject37\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject37\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject37\Surprise
+
+######################################################################
+##########################~ subject37 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       1.00      1.00      1.00         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       0.00      0.00      0.00         1
+      Happy       0.50      1.00      0.67         1
+    Neutral       1.00      1.00      1.00         1
+        Sad       1.00      1.00      1.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       0.79      0.86      0.81         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 1 0 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 1 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.857142857143
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject42\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject42\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject42\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject42\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject42\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject42\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject42\Surprise
+
+######################################################################
+##########################~ subject42 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       0.33      1.00      0.50         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       0.00      0.00      0.00         1
+      Happy       1.00      1.00      1.00         1
+    Neutral       0.00      0.00      0.00         1
+        Sad       1.00      1.00      1.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       0.62      0.71      0.64         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 1 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [1 0 0 0 0 0 0]
+ [0 0 0 0 0 1 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.714285714286
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject44\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject44\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject44\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject44\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject44\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject44\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject44\Surprise
+
+######################################################################
+##########################~ subject44 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       0.00      0.00      0.00         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       0.00      0.00      0.00         1
+      Happy       0.50      1.00      0.67         1
+    Neutral       0.33      1.00      0.50         1
+        Sad       0.00      0.00      0.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       0.40      0.57      0.45         7
+
+SVM Confusion Matrix:
+[[0 0 0 0 1 0 0]
+ [0 1 0 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.571428571429
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject50\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject50\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject50\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject50\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject50\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject50\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject50\Surprise
+
+######################################################################
+##########################~ subject50 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       1.00      1.00      1.00         1
+    Disgust       0.00      0.00      0.00         1
+       Fear       1.00      1.00      1.00         1
+      Happy       1.00      1.00      1.00         1
+    Neutral       0.33      1.00      0.50         1
+        Sad       0.00      0.00      0.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       0.62      0.71      0.64         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 1 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.714285714286
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject55\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject55\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject55\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject55\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject55\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject55\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject55\Surprise
+
+######################################################################
+##########################~ subject55 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       1.00      1.00      1.00         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       1.00      1.00      1.00         1
+      Happy       1.00      1.00      1.00         1
+    Neutral       0.50      1.00      0.67         1
+        Sad       0.00      0.00      0.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       0.79      0.86      0.81         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 1 0 0 0 0 0]
+ [0 0 1 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.857142857143
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject67\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject67\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject67\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject67\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject67\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject67\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject67\Surprise
+
+######################################################################
+##########################~ subject67 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       1.00      1.00      1.00         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       1.00      1.00      1.00         1
+      Happy       1.00      1.00      1.00         1
+    Neutral       1.00      1.00      1.00         1
+        Sad       0.00      0.00      0.00         1
+   Surprise       0.50      1.00      0.67         1
+
+avg / total       0.79      0.86      0.81         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 1 0 0 0 0 0]
+ [0 0 1 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 0 1]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.857142857143
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject71\Angry
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject71\Disgust
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject71\Fear
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject71\Happy
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject71\Neutral
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject71\Sad
+Load images from CK+ C:\Users\tsweediez\Desktop\Work in Progress\Final\Data\TESTING\subjects\subject71\Surprise
+
+######################################################################
+##########################~ subject71 ~#####################
+######################################################################
+[ 1.  2.  3.  4.  5.  6.  7.]
+
+######################################################################
+#############################~SVM Predict~############################
+######################################################################
+SVM Classification Report:
+             precision    recall  f1-score   support
+
+      Angry       1.00      1.00      1.00         1
+    Disgust       1.00      1.00      1.00         1
+       Fear       0.00      0.00      0.00         1
+      Happy       0.50      1.00      0.67         1
+    Neutral       1.00      1.00      1.00         1
+        Sad       1.00      1.00      1.00         1
+   Surprise       1.00      1.00      1.00         1
+
+avg / total       0.79      0.86      0.81         7
+
+SVM Confusion Matrix:
+[[1 0 0 0 0 0 0]
+ [0 1 0 0 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 1 0 0 0]
+ [0 0 0 0 1 0 0]
+ [0 0 0 0 0 1 0]
+ [0 0 0 0 0 0 1]]
+	 SVM Accuracy Score: 0.857142857143
