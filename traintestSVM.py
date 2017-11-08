@@ -13,10 +13,17 @@ class Tester():
         print '######################################################################'
 
         dataset = pd.read_csv(data)
-        X = dataset.ix[:, 1:].values
-        y = dataset.ix[:, 0].values
+
+        X = dataset.ix[:, 0:].values
+        y = dataset.ix[:, 1].values
+
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.40, stratify=y, random_state=40)
 
+        X_test_names = X_test[:, 0]
+
+        X = X[:, 2:]
+        X_test = X_test[:, 2:]
+        X_train = X_train[:, 2:]
         # C = np.logspace(-5, 15,num=21,base = 2.0)
         # gamma = np.logspace(-15, 3, num=19,base = 2.0)
         param_grid = [
@@ -66,6 +73,11 @@ class Tester():
         print '\t SVM Accuracy Score:', accuracy_score(y_test, y_pred, normalize=True)
         print 'file:', data
 
+        print '\n######################################################################'
+        print '#############################~SVM Test Results~############################'
+        print '######################################################################'
+        for i in range(len(X_test_names)):
+            print 'Subject: ',X_test_names[i],'\t Label: ',y_test[i],'\t Prediction: ',y_pred[i]
 
     def main(self):
         print 'Output is printed to Files/test.out'
@@ -73,7 +85,7 @@ class Tester():
         output = open('Files/test.out', 'w+')
         sys.stdout = output
         self.run_test('Files/dataCsv.csv', 'finalized_model.sav')
-        self.run_test('Files/myHogDataCsv.csv', 'myHogfinalized_model.sav')
+        #self.run_test('Files/myHogDataCsv.csv', 'myHogfinalized_model.sav')
         sys.stdout.close()
         sys.stdout = orig_stdout
         print 'Done ^_^'

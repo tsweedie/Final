@@ -12,61 +12,61 @@
 ######################################################################
 ##########################~SVM Cross Validation~######################
 ######################################################################
-	 Cross validation scores: 	[ 0.8362069   0.81578947  0.87272727]
-	 Cross validation Accuracy:	 0.84 (+/- 0.05)
+	 Cross validation scores: 	[ 0.86206897  0.89473684  0.85454545]
+	 Cross validation Accuracy:	 0.87 (+/- 0.03)
 
 ######################################################################
 #############################~SVM Train~##############################
 ######################################################################
-	 Best score for classifier:	0.774509803922
-	 Best C:	1
-	 Best Kernel:	linear
-	 Best Gamma:	auto
-	 SVM Best Estimator:	SVC(C=1, cache_size=200, class_weight=None, coef0=0.0,
-  decision_function_shape='ovr', degree=3, gamma='auto', kernel='linear',
+	 Best score for classifier:	0.789215686275
+	 Best C:	100
+	 Best Kernel:	rbf
+	 Best Gamma:	0.001
+	 SVM Best Estimator:	SVC(C=100, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_shape=None, degree=3, gamma=0.001, kernel='rbf',
   max_iter=-1, probability=True, random_state=None, shrinking=True,
   tol=0.001, verbose=False)
 
 	 SVM Grid Scores: 
-{'std_train_score': array([ 0.        ,  0.        ,  0.        ,  0.        ,  0.00393505,
-        0.00082485,  0.        ,  0.01080308,  0.        ,  0.        ,
-        0.        ,  0.        ]), 'rank_test_score': array([ 1,  1,  1,  1, 11, 11,  9, 10,  7,  5,  7,  5], dtype=int32), 'split0_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.25373134,
-        0.24626866,  1.        ,  0.29104478,  1.        ,  1.        ,
-        1.        ,  1.        ]), 'split1_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.25185185,
-        0.24444444,  1.        ,  0.26666667,  1.        ,  1.        ,
-        1.        ,  1.        ]), 'param_gamma': masked_array(data = [-- -- -- -- 0.001 0.0001 0.001 0.0001 0.001 0.0001 0.001 0.0001],
+{'std_train_score': array([ 0.        ,  0.        ,  0.        ,  0.        ,  0.00400091,
+        0.00082485,  0.        ,  0.02305896,  0.        ,  0.        ,
+        0.        ,  0.        ]), 'rank_test_score': array([ 4,  4,  4,  4, 10, 10,  4, 10,  1,  1,  1,  4]), 'mean_score_time': array([ 0.24133325,  0.32700006,  0.23500005,  0.27666664,  0.24533327,
+        0.25566673,  0.25466673,  0.29199998,  0.25833337,  0.26833328,
+        0.31666668,  0.28266652]), 'std_test_score': array([ 0.0325059 ,  0.0325059 ,  0.0325059 ,  0.0325059 ,  0.00162216,
+        0.00162216,  0.04870179,  0.00162216,  0.03073834,  0.05054336,
+        0.03073834,  0.0325059 ]), 'param_gamma': masked_array(data = [-- -- -- -- 0.001 0.0001 0.001 0.0001 0.001 0.0001 0.001 0.0001],
              mask = [ True  True  True  True False False False False False False False False],
        fill_value = ?)
-, 'split2_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.24460432,
-        0.24460432,  1.        ,  0.28776978,  1.        ,  1.        ,
-        1.        ,  1.        ]), 'std_score_time': array([ 0.0026929 ,  0.00453775,  0.00303022,  0.00368386,  0.00150182,
-        0.00235995,  0.00164332,  0.00234549,  0.00220445,  0.00489877,
-        0.00338656,  0.00651079]), 'split2_test_score': array([ 0.76923077,  0.76923077,  0.76923077,  0.76923077,  0.24615385,
-        0.24615385,  0.73846154,  0.27692308,  0.75384615,  0.76923077,
-        0.75384615,  0.75384615]), 'mean_score_time': array([ 0.13589263,  0.13906264,  0.13751133,  0.13681968,  0.13972028,
-        0.13876033,  0.13799802,  0.13907027,  0.13858   ,  0.14079237,
-        0.14127469,  0.14345407]), 'mean_fit_time': array([ 2.49982436,  2.49794602,  2.47832568,  2.46606263,  2.636343  ,
-        2.48354928,  2.56689938,  2.49091729,  2.56031593,  2.54808855,
-        2.58718204,  2.58360926]), 'param_kernel': masked_array(data = ['linear' 'linear' 'linear' 'linear' 'rbf' 'rbf' 'rbf' 'rbf' 'rbf' 'rbf'
+, 'split1_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.24444444,
+        0.24444444,  1.        ,  0.26666667,  1.        ,  1.        ,
+        1.        ,  1.        ]), 'split0_test_score': array([ 0.82857143,  0.82857143,  0.82857143,  0.82857143,  0.24285714,
+        0.24285714,  0.84285714,  0.24285714,  0.82857143,  0.85714286,
+        0.82857143,  0.82857143]), 'mean_test_score': array([ 0.78431373,  0.78431373,  0.78431373,  0.78431373,  0.24509804,
+        0.24509804,  0.78431373,  0.24509804,  0.78921569,  0.78921569,
+        0.78921569,  0.78431373]), 'split2_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.25179856,
+        0.24460432,  1.        ,  0.31654676,  1.        ,  1.        ,
+        1.        ,  1.        ]), 'param_C': masked_array(data = [1 10 100 1000 1 1 10 10 100 100 1000 1000],
+             mask = [False False False False False False False False False False False False],
+       fill_value = ?)
+, 'split0_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.25373134,
+        0.24626866,  1.        ,  0.26865672,  1.        ,  1.        ,
+        1.        ,  1.        ]), 'params': ({'kernel': 'linear', 'C': 1}, {'kernel': 'linear', 'C': 10}, {'kernel': 'linear', 'C': 100}, {'kernel': 'linear', 'C': 1000}, {'kernel': 'rbf', 'C': 1, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 10, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 10, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 100, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 1000, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 1000, 'gamma': 0.0001}), 'std_fit_time': array([ 0.22664559,  0.34961982,  0.07744808,  0.6309001 ,  0.29910645,
+        0.10245425,  0.25880121,  0.53781681,  0.27877038,  0.48586852,
+        0.38740199,  0.08990489]), 'std_score_time': array([ 0.01087306,  0.11819756,  0.00637703,  0.05657639,  0.00235708,
+        0.01276276,  0.0069442 ,  0.00637703,  0.00740879,  0.01281499,
+        0.06387663,  0.01579731]), 'split2_test_score': array([ 0.75384615,  0.75384615,  0.75384615,  0.75384615,  0.24615385,
+        0.24615385,  0.72307692,  0.24615385,  0.75384615,  0.73846154,
+        0.75384615,  0.75384615]), 'mean_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.24999145,
+        0.24510581,  1.        ,  0.28395672,  1.        ,  1.        ,
+        1.        ,  1.        ]), 'mean_fit_time': array([ 3.86566671,  3.94999997,  3.6923333 ,  4.16433342,  3.77899996,
+        3.69466654,  4.35899997,  4.49166671,  4.26066669,  4.35033337,
+        4.61333338,  4.24433335]), 'param_kernel': masked_array(data = ['linear' 'linear' 'linear' 'linear' 'rbf' 'rbf' 'rbf' 'rbf' 'rbf' 'rbf'
  'rbf' 'rbf'],
              mask = [False False False False False False False False False False False False],
        fill_value = ?)
-, 'param_C': masked_array(data = [1 10 100 1000 1 1 10 10 100 100 1000 1000],
-             mask = [False False False False False False False False False False False False],
-       fill_value = ?)
-, 'std_test_score': array([ 0.00585857,  0.00585857,  0.00585857,  0.00585857,  0.00162216,
-        0.00162216,  0.01970835,  0.01512864,  0.00755103,  0.01324701,
-        0.00755103,  0.01172449]), 'mean_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.2500625 ,
-        0.24510581,  1.        ,  0.28182708,  1.        ,  1.        ,
-        1.        ,  1.        ]), 'split0_test_score': array([ 0.77142857,  0.77142857,  0.77142857,  0.77142857,  0.24285714,
-        0.24285714,  0.78571429,  0.24285714,  0.77142857,  0.78571429,
-        0.77142857,  0.77142857]), 'mean_test_score': array([ 0.7745098 ,  0.7745098 ,  0.7745098 ,  0.7745098 ,  0.24509804,
-        0.24509804,  0.75980392,  0.25490196,  0.76470588,  0.76960784,
-        0.76470588,  0.76960784]), 'params': [{'kernel': 'linear', 'C': 1}, {'kernel': 'linear', 'C': 10}, {'kernel': 'linear', 'C': 100}, {'kernel': 'linear', 'C': 1000}, {'kernel': 'rbf', 'C': 1, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 10, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 10, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 100, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 1000, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 1000, 'gamma': 0.0001}], 'std_fit_time': array([ 0.06482362,  0.09026613,  0.09556302,  0.06578203,  0.08656943,
-        0.11411648,  0.06701747,  0.08452132,  0.0658896 ,  0.10046597,
-        0.11208869,  0.0644923 ]), 'split1_test_score': array([ 0.7826087 ,  0.7826087 ,  0.7826087 ,  0.7826087 ,  0.24637681,
-        0.24637681,  0.75362319,  0.24637681,  0.76811594,  0.75362319,
-        0.76811594,  0.7826087 ])}
+, 'split1_test_score': array([ 0.76811594,  0.76811594,  0.76811594,  0.76811594,  0.24637681,
+        0.24637681,  0.7826087 ,  0.24637681,  0.7826087 ,  0.76811594,
+        0.7826087 ,  0.76811594])}
 
 ######################################################################
 #############################~SVM Predict~############################
@@ -74,119 +74,163 @@
 SVM Classification Report:
              precision    recall  f1-score   support
 
-      Angry       0.74      0.82      0.78        17
-    Disgust       1.00      0.92      0.96        24
-       Fear       0.86      0.60      0.71        10
-      Happy       0.93      1.00      0.96        27
-    Neutral       0.67      0.71      0.69        14
-        Sad       0.75      0.82      0.78        11
-   Surprise       1.00      0.97      0.98        33
+      Angry       0.80      0.71      0.75        17
+    Disgust       0.79      0.96      0.87        24
+       Fear       0.60      0.30      0.40        10
+      Happy       0.90      1.00      0.95        27
+    Neutral       0.79      0.79      0.79        14
+        Sad       0.56      0.45      0.50        11
+   Surprise       0.97      1.00      0.99        33
 
-avg / total       0.89      0.88      0.88       136
+avg / total       0.82      0.84      0.82       136
 
 SVM Confusion Matrix:
-[[ 0  0  0  0  0  0  0]
- [ 0 14  0  0  0  3  0]
- [ 0  1 22  0  1  0  0]
- [ 0  1  0  6  0  1  2]
- [ 0  0  0  0 27  0  0]
- [ 0  2  0  1  1 10  0]
- [ 0  1  0  0  0  1  9]]
-	 SVM Accuracy Score: 0.882352941176
+[[12  2  0  0  1  2  0]
+ [ 0 23  1  0  0  0  0]
+ [ 0  2  3  3  1  1  0]
+ [ 0  0  0 27  0  0  0]
+ [ 1  1  0  0 11  1  0]
+ [ 2  1  1  0  1  5  1]
+ [ 0  0  0  0  0  0 33]]
+	 SVM Accuracy Score: 0.838235294118
 file: Files/dataCsv.csv
 
 ######################################################################
-##########################~ myHogfinalized_model.sav ~#####################
+#############################~SVM Test Results~############################
 ######################################################################
-
-######################################################################
-#############################~SVM Grid Search~########################
-######################################################################
-	 Parameter Grid:
-[{'kernel': ['linear'], 'C': [1, 10, 100, 1000]}, {'kernel': ['rbf'], 'C': [1, 10, 100, 1000], 'gamma': [0.001, 0.0001]}]
-
-######################################################################
-##########################~SVM Cross Validation~######################
-######################################################################
-	 Cross validation scores: 	[ 0.80172414  0.85087719  0.8       ]
-	 Cross validation Accuracy:	 0.82 (+/- 0.05)
-
-######################################################################
-#############################~SVM Train~##############################
-######################################################################
-	 Best score for classifier:	0.686274509804
-	 Best C:	1
-	 Best Kernel:	linear
-	 Best Gamma:	auto
-	 SVM Best Estimator:	SVC(C=1, cache_size=200, class_weight=None, coef0=0.0,
-  decision_function_shape='ovr', degree=3, gamma='auto', kernel='linear',
-  max_iter=-1, probability=True, random_state=None, shrinking=True,
-  tol=0.001, verbose=False)
-
-	 SVM Grid Scores: 
-{'std_train_score': array([ 0.        ,  0.        ,  0.        ,  0.        ,  0.00082485,
-        0.00082485,  0.0103623 ,  0.00082485,  0.        ,  0.01058578,
-        0.        ,  0.        ]), 'rank_test_score': array([ 1,  1,  1,  1, 10, 10,  9, 10,  6,  8,  1,  6], dtype=int32), 'split0_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.24626866,
-        0.24626866,  0.58955224,  0.24626866,  1.        ,  0.58955224,
-        1.        ,  1.        ]), 'split1_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.24444444,
-        0.24444444,  0.61481481,  0.24444444,  1.        ,  0.61481481,
-        1.        ,  1.        ]), 'param_gamma': masked_array(data = [-- -- -- -- 0.001 0.0001 0.001 0.0001 0.001 0.0001 0.001 0.0001],
-             mask = [ True  True  True  True False False False False False False False False],
-       fill_value = ?)
-, 'split2_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.24460432,
-        0.24460432,  0.60431655,  0.24460432,  1.        ,  0.5971223 ,
-        1.        ,  1.        ]), 'std_score_time': array([ 0.00185824,  0.00129195,  0.001418  ,  0.00106565,  0.00090686,
-        0.00105495,  0.00187879,  0.00321818,  0.00133593,  0.00141111,
-        0.00363395,  0.00242284]), 'split2_test_score': array([ 0.70769231,  0.70769231,  0.70769231,  0.70769231,  0.24615385,
-        0.24615385,  0.52307692,  0.24615385,  0.70769231,  0.52307692,
-        0.70769231,  0.70769231]), 'mean_score_time': array([ 0.07177242,  0.06924502,  0.06920664,  0.06971828,  0.07129463,
-        0.07167935,  0.0709757 ,  0.073855  ,  0.07139222,  0.07081866,
-        0.07285555,  0.07233667]), 'mean_fit_time': array([ 1.2477893 ,  1.2281944 ,  1.23120872,  1.22450566,  1.23210772,
-        1.16638366,  1.23263129,  1.23541768,  1.27004631,  1.23218036,
-        1.29476611,  1.30739395]), 'param_kernel': masked_array(data = ['linear' 'linear' 'linear' 'linear' 'rbf' 'rbf' 'rbf' 'rbf' 'rbf' 'rbf'
- 'rbf' 'rbf'],
-             mask = [False False False False False False False False False False False False],
-       fill_value = ?)
-, 'param_C': masked_array(data = [1 10 100 1000 1 1 10 10 100 100 1000 1000],
-             mask = [False False False False False False False False False False False False],
-       fill_value = ?)
-, 'std_test_score': array([ 0.03484359,  0.03484359,  0.03484359,  0.03484359,  0.00162216,
-        0.00162216,  0.01937856,  0.00162216,  0.04168327,  0.01815296,
-        0.03484359,  0.04168327]), 'mean_train_score': array([ 1.        ,  1.        ,  1.        ,  1.        ,  0.24510581,
-        0.24510581,  0.60289453,  0.24510581,  1.        ,  0.60049645,
-        1.        ,  1.        ]), 'split0_test_score': array([ 0.71428571,  0.71428571,  0.71428571,  0.71428571,  0.24285714,
-        0.24285714,  0.48571429,  0.24285714,  0.71428571,  0.5       ,
-        0.71428571,  0.71428571]), 'mean_test_score': array([ 0.68627451,  0.68627451,  0.68627451,  0.68627451,  0.24509804,
-        0.24509804,  0.49509804,  0.24509804,  0.68137255,  0.5       ,
-        0.68627451,  0.68137255]), 'params': [{'kernel': 'linear', 'C': 1}, {'kernel': 'linear', 'C': 10}, {'kernel': 'linear', 'C': 100}, {'kernel': 'linear', 'C': 1000}, {'kernel': 'rbf', 'C': 1, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 1, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 10, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 10, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 100, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}, {'kernel': 'rbf', 'C': 1000, 'gamma': 0.001}, {'kernel': 'rbf', 'C': 1000, 'gamma': 0.0001}], 'std_fit_time': array([ 0.03149769,  0.04128805,  0.03974479,  0.0372732 ,  0.04371149,
-        0.04102978,  0.037577  ,  0.04209744,  0.03696816,  0.03838226,
-        0.04893478,  0.02795708]), 'split1_test_score': array([ 0.63768116,  0.63768116,  0.63768116,  0.63768116,  0.24637681,
-        0.24637681,  0.47826087,  0.24637681,  0.62318841,  0.47826087,
-        0.63768116,  0.62318841])}
-
-######################################################################
-#############################~SVM Predict~############################
-######################################################################
-SVM Classification Report:
-             precision    recall  f1-score   support
-
-      Angry       0.67      0.82      0.74        17
-    Disgust       0.87      0.83      0.85        24
-       Fear       0.67      0.60      0.63        10
-      Happy       0.93      0.93      0.93        27
-    Neutral       0.60      0.64      0.62        14
-        Sad       0.67      0.55      0.60        11
-   Surprise       1.00      0.97      0.98        33
-
-avg / total       0.83      0.82      0.82       136
-
-SVM Confusion Matrix:
-[[ 0  0  0  0  0  0  0]
- [ 0 14  1  0  0  2  0]
- [ 0  2 20  0  1  1  0]
- [ 0  1  0  6  0  0  3]
- [ 0  0  1  1 25  0  0]
- [ 0  2  1  1  1  9  0]
- [ 0  2  0  0  0  3  6]]
-	 SVM Accuracy Score: 0.823529411765
-file: Files/myHogDataCsv.csv
+Subject:  S501_004_00000056.png 	 Label:  3 	 Prediction:  3
+Subject:  S127_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S026_006_00000013.png 	 Label:  4 	 Prediction:  4
+Subject:  S096_001_00000007.png 	 Label:  7 	 Prediction:  7
+Subject:  S105_008_00000010.png 	 Label:  2 	 Prediction:  2
+Subject:  S037_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S124_003_00000011.png 	 Label:  3 	 Prediction:  3
+Subject:  S080_005_00000013.png 	 Label:  6 	 Prediction:  2
+Subject:  S100_006_00000016.png 	 Label:  4 	 Prediction:  4
+Subject:  S505_006_00000019.png 	 Label:  6 	 Prediction:  6
+Subject:  S138_001_00000012.png 	 Label:  3 	 Prediction:  3
+Subject:  S045_004_00000015.png 	 Label:  2 	 Prediction:  2
+Subject:  S098_003_00000013.png 	 Label:  2 	 Prediction:  2
+Subject:  S054_004_00000024.png 	 Label:  2 	 Prediction:  2
+Subject:  S132_006_00000023.png 	 Label:  4 	 Prediction:  4
+Subject:  S154_002_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S089_002_00000021.png 	 Label:  4 	 Prediction:  4
+Subject:  S119_008_00000018.png 	 Label:  1 	 Prediction:  1
+Subject:  S999_001_00000018.png 	 Label:  1 	 Prediction:  1
+Subject:  S134_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S113_003_00000015.png 	 Label:  6 	 Prediction:  6
+Subject:  S127_010_00000018.png 	 Label:  1 	 Prediction:  1
+Subject:  S011_006_00000013.png 	 Label:  4 	 Prediction:  4
+Subject:  S100_001_00000001.png 	 Label:  5 	 Prediction:  2
+Subject:  S044_001_00000024.png 	 Label:  7 	 Prediction:  7
+Subject:  S092_004_00000024.png 	 Label:  4 	 Prediction:  4
+Subject:  S069_004_00000017.png 	 Label:  4 	 Prediction:  4
+Subject:  S078_004_00000027.png 	 Label:  4 	 Prediction:  4
+Subject:  S131_006_00000022.png 	 Label:  4 	 Prediction:  4
+Subject:  S086_001_00000019.png 	 Label:  7 	 Prediction:  7
+Subject:  S503_001_00000001.png 	 Label:  5 	 Prediction:  1
+Subject:  S999_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S133_009_00000006.png 	 Label:  7 	 Prediction:  7
+Subject:  S151_002_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S108_006_00000020.png 	 Label:  2 	 Prediction:  2
+Subject:  S011_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S107_005_00000011.png 	 Label:  2 	 Prediction:  2
+Subject:  S100_002_00000015.png 	 Label:  7 	 Prediction:  7
+Subject:  S011_005_00000020.png 	 Label:  2 	 Prediction:  2
+Subject:  S093_001_00000020.png 	 Label:  6 	 Prediction:  6
+Subject:  S134_008_00000013.png 	 Label:  2 	 Prediction:  2
+Subject:  S066_002_00000022.png 	 Label:  7 	 Prediction:  7
+Subject:  S113_008_00000023.png 	 Label:  1 	 Prediction:  1
+Subject:  S014_003_00000030.png 	 Label:  1 	 Prediction:  6
+Subject:  S014_005_00000017.png 	 Label:  4 	 Prediction:  4
+Subject:  S506_001_00000040.png 	 Label:  1 	 Prediction:  5
+Subject:  S079_001_00000012.png 	 Label:  7 	 Prediction:  7
+Subject:  S055_004_00000028.png 	 Label:  1 	 Prediction:  1
+Subject:  S077_001_00000028.png 	 Label:  7 	 Prediction:  7
+Subject:  S137_001_00000014.png 	 Label:  7 	 Prediction:  7
+Subject:  S010_002_00000014.png 	 Label:  7 	 Prediction:  7
+Subject:  S082_005_00000017.png 	 Label:  1 	 Prediction:  2
+Subject:  S502_001_00000016.png 	 Label:  1 	 Prediction:  1
+Subject:  S073_001_00000013.png 	 Label:  7 	 Prediction:  7
+Subject:  S127_004_00000016.png 	 Label:  4 	 Prediction:  4
+Subject:  S125_007_00000009.png 	 Label:  7 	 Prediction:  7
+Subject:  S064_001_00000012.png 	 Label:  7 	 Prediction:  7
+Subject:  S088_004_00000020.png 	 Label:  2 	 Prediction:  2
+Subject:  S077_006_00000014.png 	 Label:  2 	 Prediction:  2
+Subject:  S070_002_00000016.png 	 Label:  7 	 Prediction:  7
+Subject:  S116_001_00000014.png 	 Label:  7 	 Prediction:  7
+Subject:  S138_004_00000013.png 	 Label:  7 	 Prediction:  7
+Subject:  S034_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S107_001_00000010.png 	 Label:  7 	 Prediction:  7
+Subject:  S110_001_00000013.png 	 Label:  7 	 Prediction:  7
+Subject:  S055_006_00000008.png 	 Label:  3 	 Prediction:  4
+Subject:  S108_008_00000013.png 	 Label:  4 	 Prediction:  4
+Subject:  S046_004_00000017.png 	 Label:  2 	 Prediction:  2
+Subject:  S068_004_00000010.png 	 Label:  3 	 Prediction:  2
+Subject:  S081_002_00000024.png 	 Label:  6 	 Prediction:  6
+Subject:  S055_005_00000045.png 	 Label:  4 	 Prediction:  4
+Subject:  S062_002_00000016.png 	 Label:  7 	 Prediction:  7
+Subject:  S092_001_00000017.png 	 Label:  7 	 Prediction:  7
+Subject:  S061_004_00000022.png 	 Label:  2 	 Prediction:  2
+Subject:  S034_003_00000027.png 	 Label:  1 	 Prediction:  2
+Subject:  S089_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S067_006_00000011.png 	 Label:  2 	 Prediction:  2
+Subject:  S011_004_00000021.png 	 Label:  1 	 Prediction:  1
+Subject:  S125_005_00000013.png 	 Label:  4 	 Prediction:  4
+Subject:  S090_002_00000011.png 	 Label:  7 	 Prediction:  7
+Subject:  S122_001_00000012.png 	 Label:  7 	 Prediction:  7
+Subject:  S087_004_00000012.png 	 Label:  2 	 Prediction:  2
+Subject:  S080_008_00000009.png 	 Label:  2 	 Prediction:  2
+Subject:  S065_005_00000008.png 	 Label:  2 	 Prediction:  3
+Subject:  S044_006_00000019.png 	 Label:  2 	 Prediction:  2
+Subject:  S135_001_00000039.png 	 Label:  7 	 Prediction:  7
+Subject:  S074_004_00000018.png 	 Label:  2 	 Prediction:  2
+Subject:  S079_004_00000026.png 	 Label:  4 	 Prediction:  4
+Subject:  S138_005_00000016.png 	 Label:  4 	 Prediction:  4
+Subject:  S050_006_00000023.png 	 Label:  4 	 Prediction:  4
+Subject:  S136_005_00000010.png 	 Label:  1 	 Prediction:  6
+Subject:  S063_001_00000013.png 	 Label:  7 	 Prediction:  7
+Subject:  S130_009_00000019.png 	 Label:  6 	 Prediction:  6
+Subject:  S125_001_00000014.png 	 Label:  6 	 Prediction:  3
+Subject:  S014_001_00000029.png 	 Label:  7 	 Prediction:  7
+Subject:  S130_013_00000015.png 	 Label:  4 	 Prediction:  4
+Subject:  S064_004_00000014.png 	 Label:  6 	 Prediction:  5
+Subject:  S046_002_00000006.png 	 Label:  7 	 Prediction:  7
+Subject:  S052_001_00000015.png 	 Label:  7 	 Prediction:  7
+Subject:  S062_001_00000017.png 	 Label:  3 	 Prediction:  4
+Subject:  S131_001_00000016.png 	 Label:  7 	 Prediction:  7
+Subject:  S061_002_00000015.png 	 Label:  4 	 Prediction:  4
+Subject:  S042_004_00000020.png 	 Label:  1 	 Prediction:  1
+Subject:  S138_007_00000011.png 	 Label:  6 	 Prediction:  7
+Subject:  S035_006_00000018.png 	 Label:  4 	 Prediction:  4
+Subject:  S127_001_00000017.png 	 Label:  7 	 Prediction:  7
+Subject:  S134_004_00000015.png 	 Label:  4 	 Prediction:  4
+Subject:  S137_005_00000027.png 	 Label:  6 	 Prediction:  1
+Subject:  S084_002_00000023.png 	 Label:  3 	 Prediction:  4
+Subject:  S160_006_00000001.png 	 Label:  5 	 Prediction:  6
+Subject:  S091_003_00000021.png 	 Label:  4 	 Prediction:  4
+Subject:  S054_002_00000015.png 	 Label:  3 	 Prediction:  5
+Subject:  S089_003_00000036.png 	 Label:  1 	 Prediction:  1
+Subject:  S085_004_00000017.png 	 Label:  2 	 Prediction:  2
+Subject:  S074_001_00000020.png 	 Label:  3 	 Prediction:  6
+Subject:  S094_001_00000010.png 	 Label:  7 	 Prediction:  7
+Subject:  S055_001_00000012.png 	 Label:  7 	 Prediction:  7
+Subject:  S102_009_00000015.png 	 Label:  2 	 Prediction:  2
+Subject:  S134_003_00000011.png 	 Label:  1 	 Prediction:  1
+Subject:  S037_006_00000021.png 	 Label:  4 	 Prediction:  4
+Subject:  S044_003_00000014.png 	 Label:  4 	 Prediction:  4
+Subject:  S097_006_00000019.png 	 Label:  4 	 Prediction:  4
+Subject:  S045_005_00000030.png 	 Label:  1 	 Prediction:  1
+Subject:  S501_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S075_002_00000014.png 	 Label:  7 	 Prediction:  7
+Subject:  S111_001_00000014.png 	 Label:  7 	 Prediction:  7
+Subject:  S078_007_00000013.png 	 Label:  2 	 Prediction:  2
+Subject:  S073_006_00000014.png 	 Label:  2 	 Prediction:  2
+Subject:  S010_006_00000015.png 	 Label:  4 	 Prediction:  4
+Subject:  S069_003_00000011.png 	 Label:  2 	 Prediction:  2
+Subject:  S090_006_00000011.png 	 Label:  2 	 Prediction:  2
+Subject:  S109_006_00000015.png 	 Label:  4 	 Prediction:  4
+Subject:  S046_003_00000016.png 	 Label:  3 	 Prediction:  2
+Subject:  S504_006_00000018.png 	 Label:  6 	 Prediction:  1
+Subject:  S055_001_00000001.png 	 Label:  5 	 Prediction:  5
+Subject:  S072_005_00000019.png 	 Label:  1 	 Prediction:  1
