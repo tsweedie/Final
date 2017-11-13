@@ -1,0 +1,209 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{sys}
+\PYG{k+kn}{import} \PYG{n+nn}{cv2}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{skimage.feature} \PYG{k+kn}{import} \PYG{n}{hog}
+\PYG{k+kn}{from} \PYG{n+nn}{skimage} \PYG{k+kn}{import} \PYG{n}{img\PYGZus{}as\PYGZus{}float}
+
+\PYG{c+c1}{\PYGZsh{} a trained model for locating faces within an image}
+\PYG{n}{faceCascade} \PYG{o}{=} \PYG{n}{cv2}\PYG{o}{.}\PYG{n}{CascadeClassifier}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Files/haarcascade\PYGZus{}frontalface\PYGZus{}alt.xml\PYGZsq{}}\PYG{p}{)}
+
+\PYG{k}{class} \PYG{n+nc}{FeatureExtraction}\PYG{p}{():}
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}Viola\PYGZhy{}Jones Face Detection\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{k}{def} \PYG{n+nf}{viola\PYGZus{}jones}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{image}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} set the height and width of face images}
+        \PYG{n}{height} \PYG{o}{=} \PYG{l+m+mi}{56}
+        \PYG{n}{width} \PYG{o}{=} \PYG{l+m+mi}{56}
+
+        \PYG{c+c1}{\PYGZsh{} create an temporary \PYGZsq{}image\PYGZsq{} of zeros}
+        \PYG{n}{scaled} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{height}\PYG{p}{,} \PYG{n}{width}\PYG{p}{),} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{float}\PYG{p}{)}
+
+        \PYG{c+c1}{\PYGZsh{} set the properties of the faceCascade}
+        \PYG{n}{faces} \PYG{o}{=} \PYG{n}{faceCascade}\PYG{o}{.}\PYG{n}{detectMultiScale}\PYG{p}{(}\PYG{n}{image}\PYG{p}{,} \PYG{l+m+mf}{1.3}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{)}
+
+        \PYG{c+c1}{\PYGZsh{} set variables for finding the largest face in an image}
+        \PYG{n}{max\PYGZus{}size} \PYG{o}{=} \PYG{l+m+mi}{0}  \PYG{c+c1}{\PYGZsh{} w*h}
+        \PYG{n}{X} \PYG{o}{=} \PYG{n}{Y} \PYG{o}{=} \PYG{n}{W} \PYG{o}{=} \PYG{n}{H} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+        \PYG{c+c1}{\PYGZsh{} keeping track of x,y,w,h in order to find the biggest face}
+        \PYG{k}{for} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{w}\PYG{p}{,} \PYG{n}{h}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{faces}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{max\PYGZus{}size} \PYG{o}{\PYGZlt{}} \PYG{n}{w} \PYG{o}{*} \PYG{n}{h}\PYG{p}{:}
+                \PYG{n}{max\PYGZus{}size} \PYG{o}{=} \PYG{n}{w} \PYG{o}{*} \PYG{n}{h}
+                \PYG{n}{X} \PYG{o}{=} \PYG{n}{x}
+                \PYG{n}{Y} \PYG{o}{=} \PYG{n}{y}
+                \PYG{n}{W} \PYG{o}{=} \PYG{n}{w}
+                \PYG{n}{H} \PYG{o}{=} \PYG{n}{h}
+
+        \PYG{c+c1}{\PYGZsh{} cater for when there are no faces in the image \PYGZsq{}max\PYGZus{}size = 0\PYGZsq{}}
+        \PYG{k}{if} \PYG{n}{max\PYGZus{}size} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{} draw a rectangle identifying the location of the face in the image}
+            \PYG{n}{cv2}\PYG{o}{.}\PYG{n}{rectangle}\PYG{p}{(}\PYG{n}{image}\PYG{p}{,} \PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{),} \PYG{p}{(}\PYG{n}{X} \PYG{o}{+} \PYG{n}{W}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{+} \PYG{n}{H}\PYG{p}{),} \PYG{p}{(}\PYG{l+m+mi}{192}\PYG{p}{,} \PYG{l+m+mi}{192}\PYG{p}{,} \PYG{l+m+mi}{192}\PYG{p}{),} \PYG{l+m+mi}{2}\PYG{p}{)}
+
+            \PYG{c+c1}{\PYGZsh{} store the location with the face as our region of interest \PYGZsq{}roi\PYGZsq{}}
+            \PYG{n}{roi} \PYG{o}{=} \PYG{n}{image}\PYG{p}{[}\PYG{n}{Y}\PYG{p}{:}\PYG{n}{Y} \PYG{o}{+} \PYG{n}{H}\PYG{p}{,} \PYG{n}{X}\PYG{p}{:}\PYG{n}{X} \PYG{o}{+} \PYG{n}{W}\PYG{p}{]}
+
+            \PYG{c+c1}{\PYGZsh{} convert the roi to grayscale}
+            \PYG{n}{gray} \PYG{o}{=} \PYG{n}{cv2}\PYG{o}{.}\PYG{n}{cvtColor}\PYG{p}{(}\PYG{n}{roi}\PYG{p}{,} \PYG{n}{cv2}\PYG{o}{.}\PYG{n}{COLOR\PYGZus{}RGB2GRAY}\PYG{p}{)}
+
+            \PYG{c+c1}{\PYGZsh{} resize the roi so that all the roi\PYGZsq{}s are uniform}
+            \PYG{n}{scaled} \PYG{o}{=} \PYG{n}{cv2}\PYG{o}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{gray}\PYG{p}{,} \PYG{p}{(}\PYG{n}{height}\PYG{p}{,} \PYG{n}{width}\PYG{p}{))}
+
+        \PYG{k}{return} \PYG{n}{scaled}\PYG{p}{,} \PYG{n}{image}
+
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}My HOG\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{c+c1}{\PYGZsh{} Note: gradients work only on grayscale images}
+
+    \PYG{c+c1}{\PYGZsh{} calculate the gradient in the X direction (gx)}
+    \PYG{k}{def} \PYG{n+nf}{gx}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{scaled}\PYG{p}{):}
+        \PYG{n}{y}\PYG{p}{,} \PYG{n}{x} \PYG{o}{=} \PYG{n}{scaled}\PYG{o}{.}\PYG{n}{shape}
+        \PYG{n}{scaled} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{lib}\PYG{o}{.}\PYG{n}{pad}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}constant\PYGZsq{}}\PYG{p}{,} \PYG{n}{constant\PYGZus{}values}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{n}{gx} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{))}
+        \PYG{c+c1}{\PYGZsh{} sobelX:}
+        \PYG{c+c1}{\PYGZsh{} [1	,0	,\PYGZhy{}1]}
+        \PYG{c+c1}{\PYGZsh{} [2	,0	,\PYGZhy{}2]}
+        \PYG{c+c1}{\PYGZsh{} [1	,0	,\PYGZhy{}1]}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{y}\PYG{p}{):}
+            \PYG{n}{a} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{convolve}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{p}{:],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}valid\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{b} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{convolve}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{p}{:],} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}valid\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{c} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{convolve}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{p}{:],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}valid\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{gx}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{p}{:]} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{([}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{],} \PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{gx}
+
+    \PYG{c+c1}{\PYGZsh{} calculate the gradient in the Y direction (gy)}
+    \PYG{k}{def} \PYG{n+nf}{gy}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{scaled}\PYG{p}{):}
+        \PYG{n}{y}\PYG{p}{,} \PYG{n}{x} \PYG{o}{=} \PYG{n}{scaled}\PYG{o}{.}\PYG{n}{shape}
+        \PYG{n}{scaled} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{lib}\PYG{o}{.}\PYG{n}{pad}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}constant\PYGZsq{}}\PYG{p}{,} \PYG{n}{constant\PYGZus{}values}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{n}{gy} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{))}
+        \PYG{c+c1}{\PYGZsh{} sobelY:}
+        \PYG{c+c1}{\PYGZsh{} [\PYGZhy{}1	,\PYGZhy{}2	,\PYGZhy{}1]}
+        \PYG{c+c1}{\PYGZsh{} [0	,0	,0]}
+        \PYG{c+c1}{\PYGZsh{} [1	,2	,1]}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{x}\PYG{p}{):}
+            \PYG{n}{a} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{convolve}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{[:,} \PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}valid\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{b} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{convolve}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{[:,} \PYG{n}{j}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}valid\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{c} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{convolve}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{[:,} \PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}valid\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{gy}\PYG{p}{[:,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{([}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{],} \PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{gy}
+
+    \PYG{c+c1}{\PYGZsh{} calculate magnitude of the gradient(\PYGZsq{}intensity\PYGZsq{})}
+    \PYG{k}{def} \PYG{n+nf}{magnitude}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{gx}\PYG{p}{,} \PYG{n}{gy}\PYG{p}{):}
+        \PYG{n}{magnitude} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{gx} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{+} \PYG{n}{gy} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{magnitude}
+
+    \PYG{c+c1}{\PYGZsh{} calculate orientation of the gradient(\PYGZsq{}direction\PYGZsq{})}
+    \PYG{k}{def} \PYG{n+nf}{orientation}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{gx}\PYG{p}{,} \PYG{n}{gy}\PYG{p}{):}
+        \PYG{n}{orientation} \PYG{o}{=} \PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arctan2}\PYG{p}{(}\PYG{n}{gy}\PYG{p}{,} \PYG{n}{gx}\PYG{p}{)} \PYG{o}{/} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}  \PYG{c+c1}{\PYGZsh{} same output as cv2.cartToPolar}
+        \PYG{k}{return} \PYG{n}{orientation}
+
+    \PYG{c+c1}{\PYGZsh{} calculate the HOG using an algorithm developed from my documentation}
+    \PYG{k}{def} \PYG{n+nf}{calculate\PYGZus{}myhog}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{scaled}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} gradients gx and gy}
+        \PYG{n}{gx} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{gx}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{)}
+        \PYG{n}{gy} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{gy}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{)}
+
+        \PYG{c+c1}{\PYGZsh{} magnitude and orientation}
+        \PYG{n}{magnitude} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{magnitude}\PYG{p}{(}\PYG{n}{gx}\PYG{p}{,} \PYG{n}{gy}\PYG{p}{)}
+        \PYG{n}{orientation} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{orientation}\PYG{p}{(}\PYG{n}{gx}\PYG{p}{,} \PYG{n}{gy}\PYG{p}{)}
+
+        \PYG{c+c1}{\PYGZsh{} orientation bins}
+        \PYG{n}{bin\PYGZus{}n} \PYG{o}{=} \PYG{l+m+mi}{9}
+        \PYG{n}{bins} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{int32}\PYG{p}{(}\PYG{n}{bin\PYGZus{}n} \PYG{o}{*} \PYG{n}{orientation} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{p}{))}
+
+        \PYG{c+c1}{\PYGZsh{} magnitude and orientation cells within a block}
+        \PYG{n}{bin\PYGZus{}blocks} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n}{mag\PYGZus{}blocks} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n}{epsilon} \PYG{o}{=} \PYG{n}{sys}\PYG{o}{.}\PYG{n}{float\PYGZus{}info}\PYG{o}{.}\PYG{n}{epsilon}
+
+        \PYG{c+c1}{\PYGZsh{} size of block}
+        \PYG{n}{blocksize} \PYG{o}{=} \PYG{l+m+mi}{3}
+
+        \PYG{c+c1}{\PYGZsh{} size of cell}
+        \PYG{n}{cellsize} \PYG{o}{=} \PYG{l+m+mi}{4}
+
+        \PYG{c+c1}{\PYGZsh{} store the height and width of the face image(roi)}
+        \PYG{n}{width} \PYG{o}{=} \PYG{n}{scaled}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{n}{height} \PYG{o}{=} \PYG{n}{scaled}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+
+        \PYG{c+c1}{\PYGZsh{} create the parameters for the block slider}
+        \PYG{n}{y} \PYG{o}{=} \PYG{p}{((}\PYG{n}{height} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{cellsize} \PYG{o}{*} \PYG{n}{blocksize}\PYG{p}{))} \PYG{o}{/} \PYG{n}{cellsize}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}
+        \PYG{n}{x} \PYG{o}{=} \PYG{p}{((}\PYG{n}{width} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{cellsize} \PYG{o}{*} \PYG{n}{blocksize}\PYG{p}{))} \PYG{o}{/} \PYG{n}{cellsize}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}
+
+        \PYG{c+c1}{\PYGZsh{} stores all the histograms in an image}
+        \PYG{n}{histograms} \PYG{o}{=} \PYG{p}{[]}
+
+        \PYG{c+c1}{\PYGZsh{} loops through each block in a image(i,j)}
+        \PYG{c+c1}{\PYGZsh{} using a block \PYGZdq{}slider\PYGZdq{} to capture all posible blocks}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{):}
+            \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{):}
+                \PYG{c+c1}{\PYGZsh{} magnitude and orientation cells within a block}
+                \PYG{n}{bin\PYGZus{}block} \PYG{o}{=} \PYG{n}{bins}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{:} \PYG{n}{i} \PYG{o}{*} \PYG{n}{cellsize} \PYG{o}{+} \PYG{n}{blocksize} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{,}
+                            \PYG{n}{j} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{:} \PYG{n}{j} \PYG{o}{*} \PYG{n}{cellsize} \PYG{o}{+} \PYG{n}{blocksize} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{]}
+                \PYG{n}{mag\PYGZus{}block} \PYG{o}{=} \PYG{n}{magnitude}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{:} \PYG{n}{i} \PYG{o}{*} \PYG{n}{cellsize} \PYG{o}{+} \PYG{n}{blocksize} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{,}
+                            \PYG{n}{j} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{:} \PYG{n}{j} \PYG{o}{*} \PYG{n}{cellsize} \PYG{o}{+} \PYG{n}{blocksize} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{]}
+
+                \PYG{n}{tempHists} \PYG{o}{=} \PYG{p}{[]}
+                \PYG{n}{sumHists} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{l+m+mi}{9}\PYG{p}{,))}
+
+                \PYG{c+c1}{\PYGZsh{} loops through each cell in a block(m,n)}
+                \PYG{c+c1}{\PYGZsh{} this ensures that all the histograms in each cell are calculated}
+                \PYG{k}{for} \PYG{n}{m} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{blocksize} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{,} \PYG{n}{cellsize}\PYG{p}{):}
+                    \PYG{k}{for} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{blocksize} \PYG{o}{*} \PYG{n}{cellsize}\PYG{p}{,} \PYG{n}{cellsize}\PYG{p}{):}
+
+                        \PYG{c+c1}{\PYGZsh{} magnitude and orientation cells within a cell}
+                        \PYG{n}{cellBin} \PYG{o}{=} \PYG{n}{bin\PYGZus{}block}\PYG{p}{[}\PYG{n}{m}\PYG{p}{:}\PYG{n}{m} \PYG{o}{+} \PYG{n}{cellsize}\PYG{p}{,} \PYG{n}{n}\PYG{p}{:}\PYG{n}{n} \PYG{o}{+} \PYG{n}{cellsize}\PYG{p}{]}
+                        \PYG{n}{cellMag} \PYG{o}{=} \PYG{n}{mag\PYGZus{}block}\PYG{p}{[}\PYG{n}{m}\PYG{p}{:}\PYG{n}{m} \PYG{o}{+} \PYG{n}{cellsize}\PYG{p}{,} \PYG{n}{n}\PYG{p}{:}\PYG{n}{n} \PYG{o}{+} \PYG{n}{cellsize}\PYG{p}{]}
+
+                        \PYG{c+c1}{\PYGZsh{} temporarily store the histograms}
+                        \PYG{n}{tempHists}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{bincount}\PYG{p}{(}\PYG{n}{cellBin}\PYG{o}{.}\PYG{n}{ravel}\PYG{p}{(),} \PYG{n}{cellMag}\PYG{o}{.}\PYG{n}{ravel}\PYG{p}{(),} \PYG{n}{bin\PYGZus{}n}\PYG{p}{))}
+
+                        \PYG{c+c1}{\PYGZsh{} store the sum of the histograms within a block}
+                        \PYG{c+c1}{\PYGZsh{} this will be used for block normalization}
+                        \PYG{n}{sumHists} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{([}\PYG{n}{sumHists}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{bincount}\PYG{p}{(}\PYG{n}{cellBin}\PYG{o}{.}\PYG{n}{ravel}\PYG{p}{(),} \PYG{n}{cellMag}\PYG{o}{.}\PYG{n}{ravel}\PYG{p}{(),} \PYG{n}{bin\PYGZus{}n}\PYG{p}{)],} \PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+
+                \PYG{c+c1}{\PYGZsh{} sum up all the bins}
+                \PYG{n}{sumHists} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{sumHists}\PYG{p}{)}
+
+                \PYG{c+c1}{\PYGZsh{} normalize all the cell histograms in the block}
+                \PYG{k}{for} \PYG{n}{hist} \PYG{o+ow}{in} \PYG{n}{tempHists}\PYG{p}{:}
+                    \PYG{n}{histograms}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{divide}\PYG{p}{(}\PYG{n}{hist}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{square}\PYG{p}{(}\PYG{n}{sumHists}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{square}\PYG{p}{(}\PYG{n}{epsilon}\PYG{p}{)))))}
+
+                \PYG{c+c1}{\PYGZsh{} store the magnitude and orientation for the block}
+                \PYG{n}{bin\PYGZus{}blocks}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{bin\PYGZus{}block}\PYG{p}{)}
+                \PYG{n}{mag\PYGZus{}blocks}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{mag\PYGZus{}block}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} create the HOG feature vector}
+        \PYG{n}{hist} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{hstack}\PYG{p}{(}\PYG{n}{histograms}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{hist}
+
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}OpenCV HOG\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+    \PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+    \PYG{c+c1}{\PYGZsh{} HOG implementation from skimage, using prefered parameters}
+    \PYG{k}{def} \PYG{n+nf}{hog\PYGZus{}opencv}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{image}\PYG{p}{):}
+        \PYG{n}{image} \PYG{o}{=} \PYG{n}{img\PYGZus{}as\PYGZus{}float}\PYG{p}{(}\PYG{n}{image}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} convert unit8 tofloat64 ... dtype}
+        \PYG{n}{orientations} \PYG{o}{=} \PYG{l+m+mi}{9}		\PYG{c+c1}{\PYGZsh{} orientation bins}
+        \PYG{n}{cellSize} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{)}  		\PYG{c+c1}{\PYGZsh{} pixels\PYGZus{}per\PYGZus{}cell}
+        \PYG{n}{blockSize} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{)}  	\PYG{c+c1}{\PYGZsh{} cells\PYGZus{}per\PYGZus{}block}
+        \PYG{n}{blockNorm} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}L1\PYGZhy{}sqrt\PYGZsq{}} 	\PYG{c+c1}{\PYGZsh{} \PYGZob{}\PYGZsq{}L1\PYGZsq{}, \PYGZsq{}L1\PYGZhy{}sqrt\PYGZsq{}, \PYGZsq{}L2\PYGZsq{}, \PYGZsq{}L2\PYGZhy{}Hys\PYGZsq{}\PYGZcb{}}
+        \PYG{n}{visualize} \PYG{o}{=} \PYG{n+nb+bp}{True}  		\PYG{c+c1}{\PYGZsh{} Also return an image of the HOG.}
+        \PYG{n}{transformSqrt} \PYG{o}{=} \PYG{n+nb+bp}{False}
+        \PYG{n}{featureVector} \PYG{o}{=} \PYG{n+nb+bp}{True}
+        \PYG{n}{fd}\PYG{p}{,} \PYG{n}{hog\PYGZus{}image} \PYG{o}{=} \PYG{n}{hog}\PYG{p}{(}\PYG{n}{image}\PYG{p}{,} \PYG{n}{orientations}\PYG{p}{,} \PYG{n}{cellSize}\PYG{p}{,} \PYG{n}{blockSize}\PYG{p}{,} \PYG{n}{blockNorm}\PYG{p}{,} \PYG{n}{visualize}\PYG{p}{,} \PYG{n}{transformSqrt}\PYG{p}{,}
+                            \PYG{n}{featureVector}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{fd}
+
+    \PYG{c+c1}{\PYGZsh{} testing features}
+    \PYG{k}{def} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{image} \PYG{o}{=} \PYG{n}{cv2}\PYG{o}{.}\PYG{n}{imread}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Files/lense.png\PYGZsq{}}\PYG{p}{)}
+		\PYG{n}{scaled}\PYG{p}{,} \PYG{n}{image} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{viola\PYGZus{}jones}\PYG{p}{(}\PYG{n}{image}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{calculate\PYGZus{}myhog}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{)}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+		\PYG{n}{fd} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{hog\PYGZus{}opencv}\PYG{p}{(}\PYG{n}{scaled}\PYG{p}{)}
+		\PYG{k}{print}\PYG{p}{(}\PYG{n}{fd}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:} \PYG{n}{FeatureExtraction}\PYG{p}{()}\PYG{o}{.}\PYG{n}{main}\PYG{p}{()}
+\end{Verbatim}

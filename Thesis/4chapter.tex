@@ -4,8 +4,13 @@
 %\nocite{*}
 
 \section{Introduction} % a.
-This chapter looks at the high-level and low-level views of the system, the optimizing of parameters for feature extraction and code documentation. The high-level view provides an outline of the processes followed during the implementation of the system, while the low-level view provides a more detailed description of the implementation of the system. The optimizing of the parameters was done after the implementation of the machine learning as the rest system was stable. The physical code documentation is not provide in this documentation, however a link to the GitHub repository is provided.   
-\section{High-Level View of the System}
+This chapter looks at the high-level and low-level views of the system and
+code documentation. The high-level view in Section~\ref{sec:highlevel} provides an outline
+of the processes followed during the implementation of the system, while
+the low-level view in Section~\ref{sec:lowlevel} provides a more detailed description of
+the implementation of the system.   
+
+\section{High-Level View of the System}\label{sec:highlevel}
 The high-level view of the system provides an overview of all the stages that the sytem follows when classifying an image given as input. These stages include: Capture Frame, Face Detection, Feature Extraction, Train Machine Learning Technique and Emotion Classification. Figure ~\ref{fig: highlevel} serves as a visual aid for the content that follows.
 \begin{figure}[H]
   \centering
@@ -16,18 +21,18 @@ The high-level view of the system provides an overview of all the stages that th
 Looking at Figure ~\ref{fig: highlevel}, the High-level view is explained as:
 
 \begin{itemize}
-  \item \textbf{Capture Frame} - The web camera records a constant stream of video input. The video input consists of a sequence of multiple image frames. The system captures each frame for processing as it is displayed on the video feed.
+  \item \textbf{Capture Frame}---The web camera records a constant stream of video input. The video input consists of a sequence of multiple image frames. The system captures each frame for processing as it is displayed on the video feed.
 
-  \item \textbf{Face Detection} - Now that we have captured a single frame, we need to check if there is a face present in the frame. This is done using a face detection algorithm. If a face is present in the frame, the location of the face is extracted. The rest of the image is disregarded at this point.
+  \item \textbf{Face Detection}---Now that we have captured a single frame, we need to check if there is a face present in the frame. This is done using a face detection algorithm. If a face is present in the frame, the location of the face is extracted. The rest of the image is disregarded at this point.
 
-  \item \textbf{Feature Extraction} - Every emotion displayed facially has it's own set of unique identifying features. By applying feature extraction we are able to represent these features in a way that a computer can understand and process. The feature extraction method is applied to the region of the image that contains the face.
+  \item \textbf{Feature Extraction}---Every emotion displayed facially has it's own set of unique identifying features. By applying feature extraction we are able to represent these features in a way that a computer can understand and process. The feature extraction method is applied to the region of the image that contains the face.
 
-  \item \textbf{Train Machine Learning Technique} - Machine learning is a method used by computers to learn how to identify patterns in a given set of features. This process is called training. When we train the system, our features are labelled (Happy, Sad, Angry etc.). Labelling the features helps guide the computer in the learning process.
+  \item \textbf{Train Machine Learning Technique}---Machine learning is a method used by computers to learn how to identify patterns in a given set of features. This process is called training. When we train the system, our features are labelled (Happy, Sad, Angry etc.). Labelling the features helps guide the computer in the learning process.
 
-  \item \textbf{Emotion Classification} - When the training is complete, classification helps to test the accuracy of the trained model. At this point the model should be able to identify emotions given unlabelled features.
+  \item \textbf{Emotion Classification}---When the training is complete, classification helps to test the accuracy of the trained model. At this point the model should be able to identify emotions given unlabelled features.
 \end{itemize}
 
-\section{Low-Level View of the System}
+\section{Low-Level View of the System}\label{sec:lowlevel}
 The high-level view of the system dives deeper into the details of the components used to implement the system. This is done following the same stages used in the high-level view of the system. In this section we will look at three conceptual low-level views that relate to our system. These views are aligned to the processes followed in image processing, Support Vector Machine(SVM) model testing \& training and implementing the final system.
 \subsection{Low-Level View of Image Processing}
 
@@ -122,74 +127,23 @@ Looking at Figure ~\ref{fig: lowlevel2}, the Low-level view for SVM model testin
 \textbf{Grid-Search}- After optimizing the SVM model with grid-search a Linear Kernel with a C of 1 was used. \cite{svm}Grid search helps to find the optimal parameters for the SVM model. Where C determines the extent to which the SVM model should avoid misclassification in the training. Larger values of C decrease the margin of the hyperplane which aims to increase the accuracy of the training. A smaller value for C increases the margin of the hyperplane, but carries the downside of more misclassified training data points. In \cite{svm}the optimal range for $C = 2^{-5}, 2^{-3}, ..., 2^{15}$. 
 
 \item \textbf{Emotion Classification} - The testing dataset is used to asses the performance of the the trained SVM model on unseen data. Where the SVM model is given the testing dataset features without the corresponding labels. The results of the SVM model classification are then compared to the original labels to test the accuracy of the SVM model. The SVM model trained for our system has an overall accuracy score of 88.2\%.\\
-
-\textbf{Confusion Matrix}-See Figure ~\ref{fig:conf},a confusion matrix sumarises the outcomes of the classification based on the the actual labels of the testing data and those obtain from testing. The values obtained from the confusion matrix help with analyzing the SVM mode. Figure ~\ref{fig:conf1} shows the confusion matrix for our SVM model. The diagonal starting at the top-left index till the bottom-right index contains all the true positives/negatives for our SVM model.
+\item \textbf{Confusion Matrix}-See Figure ~\ref{fig:conf},a confusion matrix sumarises the outcomes of the classification based on the the actual labels of the testing data and those obtain from testing. The values obtained from the confusion matrix help with analyzing the SVM mode. Figure ~\ref{fig:conf1} shows the confusion matrix for our SVM model. The diagonal starting at the top-left index till the bottom-right index contains all the true positives/negatives for our SVM model.
 
 \begin{figure}[H]
 \centering
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.485\textwidth}
   \centering
   \includegraphics[width=.9\linewidth]{conf}
   \captionof{figure}{Confusion Matrix}
   \label{fig:conf}
 \end{minipage}%
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.485\textwidth}
   \centering
   \includegraphics[width=.9\linewidth]{conf1}
   \captionof{figure}{Confusion Matrix of SVM Model Classification}
   \label{fig:conf1}
 \end{minipage}
 \end{figure}
-
-Table \ref{table: terms} gives an overview of the formulas and terms used in Figure ~\ref{fig:conf} and Table \ref{table:class}. Where Table \ref{table:class} contains the 'SVM Model Classification Report'. The report indicates the performance of each individual class and the overall estimated performance of the SVM model with regards to the precision, recall and f1-score. Classes that had more data available performed better overall as compared to those that had less. There was more testing data available for these classes. Working with an uneven dataset makes it harder to judge the performance of each class in comparison to the other classes. 
-
-\begin{table}[H]
-\centering
-\begin{tabular}{ |c||c|c|}
-	\hline
-	\multicolumn{3}{|c|}{\textbf{SVM Model Evaluation}}\\
-	\hline
-      	\textbf{Term} &  \textbf{Formula} & \textbf{Description}\\
-	\hline
-      	\textbf{Type I Error} &      FP  &    False Positive   \\
-	\hline
-   	\textbf{Type II Error} &     FN  &    False Negative \\
-	\hline
-       	\textbf{Accuracy} &  $\frac{TP+TN}{TP+TN+FP+FN}$ & Evaluates the degree of correctness for the predictions   \\
-	\hline
-      	\textbf{Precision} &  $\frac{TP}{TP+FP}$ 	 &   The Positive predictive value \\
-	\hline
-    	\textbf{Recall} &     $\frac{TP}{TP+FP}$	 &   True positive rate  \\
-	\hline
-        \textbf{F1-Score} &  $2\times\frac{precision \times recall}{precision+recall}$  &   Evaluates the accuracy of predictions \\
-	\hline
-\end{tabular}   
-\caption{Terminology and formulas used for evaluating the SVM Model\cite{dict}}
-\label{table: terms}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{ |c||c|c|c|c|}
-	\hline
-	\multicolumn{5}{|c|}{\textbf{SVM Model Classification Report}}\\
-	\hline
-      	\textbf{Label} &      \textbf{precision} &   \textbf{recall} & \textbf{f1-score} &  \textbf{support}\\
-	\hline
-      	\textbf{Angry} &      0.74  &    0.82  &    0.78  &      17\\
-   	\textbf{Disgust} &      1.00  &    0.92  &    0.96  &      24\\
-       	\textbf{Fear} &      0.86  &    0.60  &    0.71  &      10\\
-      	\textbf{Happy} &      0.93  &    1.00  &    0.96  &      27\\
-    	\textbf{Neutral} &      0.67  &    0.71  &    0.69  &      14\\
-        \textbf{Sad} &      0.75  &    0.82  &    0.78  &      11 \\
-   	\textbf{Surprise} &      1.00  &    0.97  &    0.98  &      33 \\
-	\hline
-	\textbf{avg \/ total}  &     0.89 &     0.88  &   0.88    &   136\\
-	\hline
-\end{tabular}   
-\caption{SVM Classification Report}
-\label{table:class}
-\end{table}
  
 \end{itemize}
 
@@ -206,6 +160,7 @@ The third low-level view shows how the process of Automatic Human Emotion Detect
 This section covers the different combinations for the HOG parameters that were considered before the values in Table \ref{table:2} were chosen. The HOG implemented from scratch by us is compared to the OpenCV HOG using the Python Sklearn SVM library. All the other paramters remained the same at this point, the dataset had a 60\% traing and 40\% testing dataset. The SVM model optimized to a Linear Kernel with a C of 1 for each iteration of the HOG features optimization. Both HOGs maintained a bin size of 9 and 50\% overlap for Block$(2,2)$, with a 66.66\% overlap for Block$(3,3)$.
 \begin{table}[H]
 \centering
+\resizebox{1.00\textwidth}{!}{
 \begin{tabular}{ |c||c|c|}
 	\hline
 	\multicolumn{3}{|c|}{\textbf{Accuracy of HOG Parameters}}\\
@@ -222,14 +177,12 @@ This section covers the different combinations for the HOG parameters that were 
 	\hline
 	AHED HOG & 77.9\% & 82.3\% \\
 	\hline
-\end{tabular}   
+\end{tabular}}
 \caption{HOG Optimization}
 \label{table:class}
 \end{table}
+\section{Conclusion}
+The Automatic Human Emotion Detection system was implemented entirely using Python. OpenCV is used for the Viola-Jones face detection, Sklearn was used to implement the Histograms of Oriented gradients and the Support Vector Machines. The HOG implementation done from scratch used python numpy arrays and followed the implementation method discussed in Chapter 3. The highest accuracy achieved for the HOG implemented with OpenCV was 88.2\% and 82.3\% with the HOG implemented in this project. 
 
-\subsection{Code Documentation}
-All the code used for the implementation of the Automatic Human Emotion Detection system can be found at :https://github.com/tsweedie/Final.
 
-\subsection{Conclusion}
-The Automatic Human Emotion Detection system was implemented entirely using Python. OpenCV is used for the Viola-Jones face detection, Sklearn was used to implement the Histograms of Oriented gradients and the Support Vector Machines. The HOG implementation done from scratch used python numpy arrays and followed the implementation method discussed in Chapter 3. The highest accuracy achieved for the HOG implemented with OpenCV was 88.2\% and 82.3\% with the HOG implemented in this project.  
 

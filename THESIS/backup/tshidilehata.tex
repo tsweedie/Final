@@ -30,6 +30,18 @@
 \usepackage{setspace}
 \usepackage{pstricks}
 \usepackage{pstricks-add}
+%\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{algorithm}
+\renewcommand{\listingscaption}{Python code}
+\newminted{python}{fontsize=\footnotesize,
+	escapeinside=||,
+    mathescape=true,
+    numbersep=5pt,
+    linenos=true,
+    autogobble,
+    framesep=3mm}
 
 % \renewcommand{\captionfont}{\bfseries} % bold caption (needed with caption
                                        % package; otherwise bold is default)
@@ -45,6 +57,8 @@
 %\printindex    % put where you want index
 
 % \renewcommand{\cite}{\citep}
+
+%\usepackage[utf8]{inputenc}
 \begin{document}
 
 %
@@ -73,9 +87,9 @@
 \include{2chapter}
 \include{3chapter}
 \include{4chapter}
-%\include{5chapter}
-%\include{6chapter}
-%\include{7chapter}
+\include{5chapter}
+\include{6chapter}
+\include{7chapter}
 %\include{appendix_A}
 %\include{appendix_B}
 %\include{appendix_C}

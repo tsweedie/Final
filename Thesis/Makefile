@@ -6,6 +6,7 @@
 #Put your surnameFirstName here, e.g. doddsReg 
 
 D=regdodds
+D=tshidilehata
 Dps=$(D).ps
 Dtex=$(D).tex
 WWW=../../www/latex/
@@ -32,13 +33,14 @@ $(Dps):	$(D).dvi
 #	dvipdf $(D)
 
 $(D).dvi: $(D).tex *chapter.dvi bibliography.dvi appendix*.dvi
+	make clean
 	echo "$D.tex $(D).dvi $(D).tex"
 	-rm -f *.aux
-	pdflatex $(D)
+	pdflatex -shell-escape $(D)
 	bibtex $(D)
 	makeindex $(D)
-	pdflatex $(D)
-	pdflatex $(D)
+	pdflatex -shell-escape $(D)
+	pdflatex -shell-escape $(D)
 #	latex $(D)
 #	latex $(D)
 #	latex $(D)

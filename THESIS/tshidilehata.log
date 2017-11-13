@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  23 SEP 2017 06:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  13 NOV 2017 13:31
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
-**regdodds
-(./regdodds.tex
+**tshidilehata
+(./tshidilehata.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (./uwchonoursthesis.cls
@@ -478,15 +478,170 @@ e 20.
 (/usr/share/texlive/texmf-dist/tex/latex/pstricks-add/pstricks-add.cfg
 File: pstricks-add.cfg 2005/01/10 v0.1 addtional user stuff (hv)
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count154
+\lst@gtempboxa=\box35
+\lst@token=\toks40
+\lst@length=\count155
+\lst@currlwidth=\dimen184
+\lst@column=\count156
+\lst@pos=\count157
+\lst@lostspace=\dimen185
+\lst@width=\dimen186
+\lst@newlines=\count158
+\lst@lineno=\count159
+\lst@maxwidth=\dimen187
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count160
+\lst@skipnumbers=\count161
+\lst@framebox=\box36
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2015/09/09 v2.1 Yet another Pygments shim for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count162
+\FV@InFile=\read3
+\FV@TabBox=\box37
+\c@FancyVerbLine=\count163
+\FV@StepNumber=\count164
+\FV@OutFile=\write3
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count165
+\calc@Bcount=\count166
+\calc@Adimen=\dimen188
+\calc@Bdimen=\dimen189
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count167
+\calc@Cskip=\skip54
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
+)
+runsystem(uname -s > "tshidilehata.w18")...executed.
+
+
+(./tshidilehata.w18)
+runsystem(rm -- "tshidilehata.w18")...executed.
+
+)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count168
+)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write4
+\integerpart=\count169
+\decimalpart=\count170
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count171
+\output=\toks41
+\linenoprevgraf=\count172
+\linenumbersep=\dimen190
+\linenumberwidth=\dimen191
+\c@linenumber=\count173
+\c@pagewiselinenumber=\count174
+\c@LN@truepage=\count175
+\c@internallinenumber=\count176
+\c@internallinenumbers=\count177
+\quotelinenumbersep=\dimen192
+\bframerule=\dimen193
+\bframesep=\dimen194
+\bframebox=\box38
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\minted@appexistsfile=\read4
+\FV@BreakIndent=\dimen195
+\FV@BreakSymbolSepLeft=\dimen196
+\FV@BreakSymbolSepRight=\dimen197
+\FV@BreakSymbolIndentLeft=\dimen198
+\FV@BreakSymbolIndentRight=\dimen199
+\c@FancyVerbLineBreakLast=\count178
+\FV@LineBox=\box39
+\FV@LineIndentBox=\box40
+\minted@bgbox=\box41
+\minted@code=\write5
+\c@minted@FancyVerbLineTemp=\count179
+\@float@every@listing=\toks42
+\c@listing=\count180
+)
+runsystem(mkdir -p "_minted-tshidilehata")...executed.
+
+
+(./_minted-tshidilehata/default.pygstyle)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+\@float@every@algorithm=\toks43
+\c@algorithm=\count181
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 )
-\@indexfile=\write3
-\openout3 = `regdodds.idx'.
+\@indexfile=\write6
+\openout6 = `tshidilehata.idx'.
 
 
-Writing index file regdodds.idx
-(./regdodds.aux (./title.aux) (./abstract.aux) (./acknowledgements.aux)
+Writing index file tshidilehata.idx
+runsystem(which "pygmentize" && touch "tshidilehata.aex")...executed.
+
+runsystem(rm "tshidilehata.aex")...executed.
+
+(./tshidilehata.aux (./title.aux) (./abstract.aux) (./acknowledgements.aux)
 (./1chapter.aux) (./2chapter.aux) (./3chapter.aux
 
 LaTeX Warning: Label `fig:sub1' multiply defined.
@@ -536,57 +691,43 @@ LaTeX Warning: Label `fig:test1' multiply defined.
 
 LaTeX Warning: Label `fig:test2' multiply defined.
 
-) (./4chapter.aux
+) (./4chapter.aux) (./5chapter.aux
 
 LaTeX Warning: Label `table:class' multiply defined.
 
-) (./bibliography.aux))
-\openout1 = `regdodds.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Warning: Label `fig: res1' multiply defined.
+
+) (./6chapter.aux) (./7chapter.aux) (./bibliography.aux))
+\openout1 = `tshidilehata.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count154
-\scratchdimen=\dimen184
-\scratchbox=\box35
-\nofMPsegments=\count155
-\nofMParguments=\count156
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count157
-\MPscratchDim=\dimen185
-\MPnumerator=\count158
-\makeMPintoPDFobject=\count159
-\everyMPtoPDFconversion=\toks41
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+\scratchcounter=\count182
+\scratchdimen=\dimen256
+\scratchbox=\box42
+\nofMPsegments=\count183
+\nofMParguments=\count184
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count185
+\MPscratchDim=\dimen257
+\MPnumerator=\count186
+\makeMPintoPDFobject=\count187
+\everyMPtoPDFconversion=\toks45
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -595,19 +736,6 @@ Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -618,13 +746,16 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count188
+
+(./_minted-tshidilehata/default-pyg-prefix.pygstyle)
 \openout2 = `title.aux'.
 
-
-(./title.tex
-\oldbaseline=\skip52
+ (./title.tex
+\oldbaseline=\skip55
  [1
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -663,7 +794,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--38
 
 
 
-] (./regdodds.toc
+] (./tshidilehata.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -677,17 +808,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ])
-\tf@toc=\write4
-\openout4 = `regdodds.toc'.
+\tf@toc=\write7
+\openout7 = `tshidilehata.toc'.
 
  [8]
-(./regdodds.lof)
-\tf@lof=\write5
-\openout5 = `regdodds.lof'.
+(./tshidilehata.lof [9
 
- [9
+])
+\tf@lof=\write8
+\openout8 = `tshidilehata.lof'.
 
-] [10]
+ [10]
 \openout2 = `1chapter.aux'.
 
  (./1chapter.tex
@@ -891,7 +1022,7 @@ Chapter 4.
 <pres1.png, id=130, 1815.78375pt x 652.4375pt>
 File: pres1.png Graphic file (type png)
  <use pres1.png>
-Package pdftex.def Info: pres1.png used on input line 12.
+Package pdftex.def Info: pres1.png used on input line 17.
 (pdftex.def)             Requested size: 363.15031pt x 130.48518pt.
  [15
 
@@ -900,101 +1031,162 @@ Package pdftex.def Info: pres1.png used on input line 12.
  <./pres1.png>] <pres2.png, id=135, 1807.75375pt x 829.0975pt>
 File: pres2.png Graphic file (type png)
  <use pres2.png>
-Package pdftex.def Info: pres2.png used on input line 37.
+Package pdftex.def Info: pres2.png used on input line 42.
 (pdftex.def)             Requested size: 361.54434pt x 165.81656pt.
  [16]
 <second.png, id=139, 646.415pt x 357.335pt>
 File: second.png Graphic file (type png)
  <use second.png>
-Package pdftex.def Info: second.png used on input line 47.
+Package pdftex.def Info: second.png used on input line 52.
 (pdftex.def)             Requested size: 387.85199pt x 214.40265pt.
  [17 <./pres2.png> <./second.png>]
-Overfull \hbox (47.01791pt too wide) in paragraph at lines 80--87
+Overfull \hbox (47.01791pt too wide) in paragraph at lines 85--92
  [][] 
  []
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
-<svm.png, id=148, 329.23pt x 270.51062pt>
+[18] <svm.png, id=148, 329.23pt x 270.51062pt>
 File: svm.png Graphic file (type png)
  <use svm.png>
-Package pdftex.def Info: svm.png used on input line 115.
+Package pdftex.def Info: svm.png used on input line 120.
 (pdftex.def)             Requested size: 197.53952pt x 162.30762pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
 [19 <./svm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
-[20] <conf.png, id=158, 201.75375pt x 190.7125pt>
+<conf.png, id=153, 201.75375pt x 190.7125pt>
 File: conf.png Graphic file (type png)
  <use conf.png>
-Package pdftex.def Info: conf.png used on input line 132.
-(pdftex.def)             Requested size: 178.21646pt x 168.4648pt.
+Package pdftex.def Info: conf.png used on input line 136.
+(pdftex.def)             Requested size: 172.87018pt x 163.41006pt.
 
-<conf1.png, id=159, 234.37563pt x 158.09062pt>
+<conf1.png, id=154, 234.37563pt x 158.09062pt>
 File: conf1.png Graphic file (type png)
  <use conf1.png>
-Package pdftex.def Info: conf1.png used on input line 138.
-(pdftex.def)             Requested size: 178.21646pt x 120.20801pt.
-
-Overfull \hbox (87.88158pt too wide) in paragraph at lines 148--167
- [][] 
- []
-
-[21 <./conf.png> <./conf1.png>] <demo.png, id=165, 646.91687pt x 363.85938pt>
+Package pdftex.def Info: conf1.png used on input line 142.
+(pdftex.def)             Requested size: 172.87018pt x 116.60408pt.
+ [20]
+<demo.png, id=160, 646.91687pt x 363.85938pt>
 File: demo.png Graphic file (type png)
-
-<use demo.png>
-Package pdftex.def Info: demo.png used on input line 200.
+ <use demo.png>
+Package pdftex.def Info: demo.png used on input line 154.
 (pdftex.def)             Requested size: 388.1531pt x 218.31729pt.
- [22 <./demo.png>]) [23]
-\openout2 = `bibliography.aux'.
+ [21 <./conf.png> <./conf1.png> <./demo.png>]) [22]
+\openout2 = `5chapter.aux'.
 
- (./bibliography.tex (./regdodds.bbl
-[24
+ (./5chapter.tex
+Chapter 5.
+[23
 
 
 
 ]
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¼ in font cmr12!
-) [25]) (./regdodds.ind) (./regdodds.aux (./title.aux) (./abstract.aux)
-(./acknowledgements.aux) (./1chapter.aux) (./2chapter.aux) (./3chapter.aux)
-(./4chapter.aux) (./bibliography.aux))
+File: conf1.png Graphic file (type png)
+ <use conf1.png>
+Package pdftex.def Info: conf1.png used on input line 66.
+(pdftex.def)             Requested size: 351.56255pt x 237.13533pt.
+ [24] <res1.png, id=176, 231.36438pt x 302.12875pt>
+File: res1.png Graphic file (type png)
+
+<use res1.png>
+Package pdftex.def Info: res1.png used on input line 77.
+(pdftex.def)             Requested size: 347.0457pt x 453.192pt.
+ <res2.png, id=177, 240.9pt x 302.63063pt>
+File: res2.png Graphic file (type png)
+ <use res2.png>
+Package pdftex.def Info: res2.png used on input line 83.
+(pdftex.def)             Requested size: 361.34909pt x 453.94482pt.
+
+[25 <./res1.png>]) [26 <./res2.png>]
+\openout2 = `6chapter.aux'.
+
+ (./6chapter.tex
+Chapter 6.
+) [27
+
+
+
+]
+\openout2 = `7chapter.aux'.
+
+ (./7chapter.tex
+Missing character: There is no ï in font cmr12!
+Missing character: There is no » in font cmr12!
+Missing character: There is no ¿ in font cmr12!
+ [28
+
+
+]
+Chapter 7.
+\openout3 = `tshidilehata.pyg'.
+
+
+(./_minted-tshidilehata/7102EDF85F86EF495990F4CD0130CF90913E3794EE2D58BD0085273
+9866CD5D9.pygtex
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
+ [29
+
+] [30] [31] [32] [33]) [34]
+\openout3 = `tshidilehata.pyg'.
+
+
+(./_minted-tshidilehata/CEB724343D72BFA09E0EF5E3185526F4913E3794EE2D58BD0085273
+9866CD5D9.pygtex [35
+
+] [36])) [37]
+\openout2 = `bibliography.aux'.
+
+ (./bibliography.tex (./tshidilehata.bbl
+[38
+
+
+
+]) [39]) (./tshidilehata.ind)
+runsystem(rm "tshidilehata.pyg")...executed.
+
+ (./tshidilehata.aux (./title.aux)
+(./abstract.aux) (./acknowledgements.aux) (./1chapter.aux) (./2chapter.aux)
+(./3chapter.aux) (./4chapter.aux) (./5chapter.aux) (./6chapter.aux)
+(./7chapter.aux) (./bibliography.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13230 strings out of 493029
- 225294 string characters out of 6136235
- 354439 words of memory out of 5000000
- 16423 multiletter control sequences out of 15000+600000
- 10803 words of font info for 40 fonts, out of 8000000 for 9000
+ 16844 strings out of 493029
+ 289583 string characters out of 6136235
+ 459417 words of memory out of 5000000
+ 19941 multiletter control sequences out of 15000+600000
+ 11308 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,10n,79p,1242b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,12n,79p,1246b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmti12.pfb>
-Output written on regdodds.pdf (36 pages, 1725035 bytes).
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on tshidilehata.pdf (50 pages, 1817269 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 111 compressed objects within 2 object streams
+ 276 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
