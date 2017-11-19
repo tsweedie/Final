@@ -4,6 +4,7 @@ The top-level auxiliary file: tshidilehata.aux
 A level-1 auxiliary file: title.aux
 A level-1 auxiliary file: abstract.aux
 A level-1 auxiliary file: acknowledgements.aux
+A level-1 auxiliary file: glossary.aux
 A level-1 auxiliary file: 1chapter.aux
 A level-1 auxiliary file: 2chapter.aux
 A level-1 auxiliary file: 3chapter.aux
@@ -17,7 +18,7 @@ Database file #1: tshidilehata.bib
 Warning--empty journal in svm
 You've used 14 entries,
             1791 wiz_defined-function locations,
-            534 strings with 5630 characters,
+            535 strings with 5642 characters,
 and the built_in function-call counts, 3108 in all, are:
 = -- 276
 > -- 124

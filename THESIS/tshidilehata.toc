@@ -1,7 +1,9 @@
 \contentsline {chapter}{Declaration}{iii}
 \contentsline {chapter}{Abstract}{v}
 \contentsline {chapter}{Acknowledgment}{vi}
-\contentsline {chapter}{List of Figures}{ix}
+\contentsline {chapter}{List of Tables}{ix}
+\contentsline {chapter}{List of Figures}{x}
+\contentsline {chapter}{Glossary}{xii}
 \contentsline {chapter}{\numberline {1.}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Problem Statement}{1}
 \contentsline {section}{\numberline {1.2}Proposed Solution}{2}
@@ -25,23 +27,29 @@
 \contentsline {subsubsection}{\numberline {3.4.3.1}Example:}{12}
 \contentsline {subsection}{\numberline {3.4.4}Weighted Vote in Spatial \& Oriented Cells}{13}
 \contentsline {subsection}{\numberline {3.4.5}Contrast Normalize over Overlapping spatial cells}{14}
-\contentsline {subsection}{\numberline {3.4.6}Collect HOGs over Detection Window}{14}
-\contentsline {chapter}{\numberline {4.}Implementation}{15}
-\contentsline {section}{\numberline {4.1}Introduction}{15}
-\contentsline {section}{\numberline {4.2}High-Level View of the System}{15}
-\contentsline {section}{\numberline {4.3}Low-Level View of the System}{16}
-\contentsline {subsection}{\numberline {4.3.1}Low-Level View of Image Processing}{16}
-\contentsline {subsection}{\numberline {4.3.2}Low-Level View of SVM Model Testing \& Training}{17}
-\contentsline {subsection}{\numberline {4.3.3}Low-Level View of Final System}{21}
-\contentsline {subsection}{\numberline {4.3.4}Optimizing HOG features}{21}
-\contentsline {section}{\numberline {4.4}Conclusion}{22}
-\contentsline {chapter}{\numberline {5.}Testing}{23}
-\contentsline {section}{\numberline {5.1}Introduction}{23}
-\contentsline {subsection}{\numberline {5.1.1}Analysis of SVM Testing Results}{23}
-\contentsline {subsection}{\numberline {5.1.2}Analysis of Confusion Matrix for Test Results}{24}
-\contentsline {subsection}{\numberline {5.1.3}Analysis of SVM Testing Results for Subjects}{24}
-\contentsline {chapter}{\numberline {6.}User Guide}{27}
-\contentsline {section}{\numberline {6.1}Introduction}{27}
-\contentsline {chapter}{\numberline {7.}Code Documentation}{29}
-\contentsline {section}{\numberline {7.1}Introduction}{29}
-\contentsline {chapter}{Bibliography}{38}
+\contentsline {subsection}{\numberline {3.4.6}Collect HOGs over Detection Window}{15}
+\contentsline {chapter}{\numberline {4.}Implementation}{16}
+\contentsline {section}{\numberline {4.1}Introduction}{16}
+\contentsline {section}{\numberline {4.2}High-Level View of the System}{16}
+\contentsline {section}{\numberline {4.3}Low-Level View of the System}{17}
+\contentsline {subsection}{\numberline {4.3.1}Low-Level View of Image Processing}{17}
+\contentsline {subsection}{\numberline {4.3.2}Low-Level View of SVM Model Testing \& Training}{18}
+\contentsline {subsection}{\numberline {4.3.3}Low-Level View of Final System}{22}
+\contentsline {subsection}{\numberline {4.3.4}Optimizing HOG features}{22}
+\contentsline {section}{\numberline {4.4}Conclusion}{23}
+\contentsline {chapter}{\numberline {5.}Testing}{24}
+\contentsline {section}{\numberline {5.1}Introduction}{24}
+\contentsline {subsection}{\numberline {5.1.1}Analysis of SVM Testing Results}{24}
+\contentsline {subsection}{\numberline {5.1.2}Analysis of Confusion Matrix for Test Results}{25}
+\contentsline {subsection}{\numberline {5.1.3}Analysis of SVM Testing Results for Subjects}{26}
+\contentsline {section}{\numberline {5.2}Conclusion}{28}
+\contentsline {chapter}{\numberline {6.}User Guide}{29}
+\contentsline {section}{\numberline {6.1}Introduction}{29}
+\contentsline {subsection}{\numberline {6.1.1}System Requirements}{30}
+\contentsline {subsection}{\numberline {6.1.2}Instructions}{30}
+\contentsline {subsubsection}{\numberline {6.1.2.1}Ubuntu}{30}
+\contentsline {subsubsection}{\numberline {6.1.2.2}Ubuntu}{30}
+\contentsline {subsection}{\numberline {6.1.3}Feedback}{31}
+\contentsline {chapter}{\numberline {7.}Code Documentation}{33}
+\contentsline {section}{\numberline {7.1}Introduction}{33}
+\contentsline {chapter}{Bibliography}{42}
