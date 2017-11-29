@@ -6,6 +6,7 @@
 
 %\documentclass[chapter,a4paper]{rmdthesis}
 \documentclass[chapter,a4paper,openright,oneside]{uwchonoursthesis}
+
 % Use the first command below if you want captions over 1 line indented. A side
 % effect of this is to remove the use of bold for captions. To restore bold,
 % also include the second line below.
@@ -32,7 +33,24 @@
 \usepackage{pstricks}
 \usepackage{pstricks-add}
 %\usepackage[utf8]{inputenc}
+%---------------------Setup for listings package ------------------------>
 \usepackage{listings}
+\lstset{language=python, numbers=left, numberstyle=\tiny, numbersep=5pt,
+%normal   basicstyle=\small\ttfamily, upquote=false, columns=fixed,
+%        basicstyle=\normalsize\ttfamily, 
+%        basicstyle=\small\ttfamily,
+%        basicstyle=\tiny\ttfamily,
+        basicstyle=\scriptsize\ttfamily, 
+%        basicstyle=\footnotesize\ttfamily, 
+%        basicstyle=\small\ttfamily, 
+        upquote=false, columns=fullflexible, %columns=fixed,
+        backgroundcolor=\color{yellow!20},
+        keywordstyle=\bfseries\color{blue},
+        mathescape=true,
+        % escapechar={|},
+        escapeinside=||,
+        morekeywords={yield,begin,end,function,procedure,Algorithm}}
+%<--------------------Setup for listings package -------------------------
 \usepackage{minted}
 \usepackage{algorithm}
 \renewcommand{\listingscaption}{Python code}

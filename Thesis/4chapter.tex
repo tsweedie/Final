@@ -20,18 +20,19 @@ The high-level view of the system provides an overview of all the stages that th
 \end{figure} 
 Looking at Figure ~\ref{fig: highlevel}, the High-level view is explained as:
 
-\begin{itemize}
+\begin{enumerate}
   \item \textbf{Capture Frame} -- The web camera records a constant stream of video input. The video input consists of a sequence of multiple image frames. The system captures each frame for processing as it is displayed on the video feed.
 
   \item \textbf{Face Detection} -- Now that we have captured a single frame, we need to check if there is a face present in the frame. This is done using a face detection algorithm. If a face is present in the frame, the location of the face is extracted. The rest of the image is disregarded at this point.
 
   \item \textbf{Feature Extraction} -- Every emotion displayed facially has it's own set of unique identifying features. By applying feature extraction we are able to represent these features in a way that a computer can understand and process. The feature extraction method is applied to the region of the image that contains the face.
 
-  \item \textbf{Train Machine Learning Technique} -- Machine learning is a method used by computers to learn how to identify patterns in a given set of features. This process is called training. When we train the system, our features are labelled (\textit{Happy, Sad, Angry} etc.). Labelling the features helps guide the computer in the learning process.
+  \item \textbf{Train Machine Learning Technique} -- Machine learning is a method used by computers to learn how to identify patterns in a given set of features. This process is called training. When we train the system, our features are labelled numerically from 1 to 7 and correspond with the classes (\textit{Angry, Disgust, Fear, Happy, Sadness, Surprise} and \textit{Neutral}). Labelling the features helps guide the computer in the learning process.
 
   \item \textbf{Emotion Classification} -- When the training is complete, classification helps to test the accuracy of the trained model. At this point the model should be able to identify emotions given unlabelled features.
-\end{itemize}
+\end{enumerate}
 
+\clearpage
 \section{Low-Level View of the System}\label{sec:lowlevel}
 The high-level view of the system dives deeper into the details of the components used to implement the system. This is done following the same stages used in the high-level view of the system. In this section we will look at three conceptual low-level views that relate to our system. These views are aligned to the processes followed in image processing, Support Vector Machine model testing \& training and implementing the final system.
 \subsection{Low-Level View of Image Processing}
@@ -42,20 +43,23 @@ The first low-level view is a visual representation of how the high-level view r
   \includegraphics[scale=0.2]{pres2}
   \caption{Low-Level View of Image Processing}
   \label{fig: lowlevel}
-\end{figure} 
+\end{figure}
 
-\subsection{Low-Level View of SVM Model Testing \& Training}
 
-The second low-level view relates to the training and testing of the SVM model used to classify the emotions. Where the `Capture Frame' stage is replaced by `Get Images from Dataset'.
+\subsection{Low-Level View of SVM Model Optimization, Testing \& Training}
+
+The second low-level view relates to the training and testing of the SVM model used to classify the emotions. Where the `Capture Frame' stage is replaced by `Get Images from Dataset'. The results given in this section aim to contextualize the information given. The results pertaining to the testing or classification of the SVM model after training will be discussed further in Chapter 5. The code used to implement the SVM Optimization, Testing and Training can be found in Appendix B, Section B.1.2.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.65]{second}
   \caption{Low-Level View of SVM Model Testing \& Training}
   \label{fig: lowlevel2}
 \end{figure} 
+
+
 Looking at Figure~\ref{fig: lowlevel2}, the Low-level view for SVM model testing and training is explained as:
 
-\begin{itemize}
+\begin{enumerate}
   \item \textbf{Get Images From Dataset} -- The Extended Cohn-Kanade Dataset \citep{ck} is used as data for the training and testing of our SVM model. The images are divided into seven groups, whose labels are: \textit{Angry, Disgust, Fear, Happy, Sadness, Surprise} and \textit{Neutral}. The Table \ref{table:1} provides the total number of images present for each label.
 
 \begin{table}[H]
@@ -93,7 +97,7 @@ Looking at Figure~\ref{fig: lowlevel2}, the Low-level view for SVM model testing
 \label{table:22}
 \end{table}
 
- The parameters used for the HOG are listed in Table \ref{table:2}.
+ The parameters used for the HOG are listed in Table \ref{table:2}. The optimization of the HOG parameters is discussed in Section 4.3.4.
 \begin{table}[H]
 \centering
 \begin{tabular}{ |c|c|c|}
@@ -113,7 +117,9 @@ Looking at Figure~\ref{fig: lowlevel2}, the Low-level view for SVM model testing
 \label{table:2}
 \end{table}
 
-  \item \textbf{Train Machine Learning Technique} -- The machine learning technique used to do the classification for our system is Support Vector Machines. \cite{ck} Used SVMs to test the accuracy of their CK+ dataset due to its proven accuracy with face and facial action detection. An SVM attempts to separate the closest negative and positive points in each class from each other. Once this separation is achieved it makes it easier to separate negative and positive points that are further away from each other, as the similarities in these points are less than those in the points that are closer. The distance between these points is calculated by subtracting the positive and negative points from each other. The positive and negative points closest to each other are considered our support vectors, these help in determining the separating hyperplane. The SVM needs to ensure that the distance between the support vectors is maximized. Figure~\ref{fig: svm} visualizes the concepts discussed.\\
+  \item \textbf{Train Machine Learning Technique} -- The machine learning technique used to do the classification for our system is Support Vector Machines. \cite{ck} Used SVMs to test the accuracy of their CK+ dataset due to its proven accuracy with face and facial action detection. Binary classification is the simplest example for explaining how SVMs work. Where the SVM attempts to separate the closest negative and positive points in each class from each other. Once this separation is achieved it makes it easier to separate negative and positive points that are further away from each other, as the similarities in these points are less than those in the points that are closer. The distance between these points is calculated by subtracting the positive and negative points from each other. The positive and negative points closest to each other are considered our support vectors, these help in determining the separating hyperplane. The SVM needs to ensure that the distance between the support vectors is maximized. Figure~\ref{fig: svm} visualizes the concepts discussed.\\
+  
+  Considering that we have multiple classes in our dataset the `one versus all' method was used to train the SVM model. This is where one class is labelled as positive $(c)$ whilst the other classes are labelled as negative $(n-c)$. All of the classes $(n)$ are given the opportunity to be labelled as the positive class and the SVM model is generated.  
 
 \begin{figure}[H]
   \centering
@@ -122,30 +128,42 @@ Looking at Figure~\ref{fig: lowlevel2}, the Low-level view for SVM model testing
   \label{fig: svm}
 \end{figure} 
 
-\textbf{Cross-Validation} -- The feature dataset compiled after completing the feature extraction is used as input for the SVM. Where the dataset is divided into a training and testing dataset. The percentage of the split is dependent on how well the model performs with each split. A 60\% training and 40\% testing split was used for the SVM. Both these datasets should contain an equal distribution of the emotion labels in each dataset. This step ensures that all labels appear equally in both datasets. The Cross-validation score using a stratified K-fold of 3 is approximately 84\%. Cross-validation measures the overall performance of the SVM model on different training and testing data splits \cite{svm}. This tests the independence of the model to the dataset and helps to prevent overfitting in our model. K-fold cross-validation is done by splitting the dataset into K subsets of equal length. Each subset is then tested on the SVM model of the remaining K-1 subsets. Stratified K-fold cross-validation ensures that the classes are distributed equally in each subset. The training dataset is used as input for training our SVM and creating the SVM model that will be used in our system.\\
 
-\textbf{Grid-Search} -- After optimizing the SVM model with grid-search a Linear Kernel with a C of 1 was used. Grid search helps to find the optimal parameters for the SVM model. Where C determines the extent to which the SVM model should avoid misclassification in the training \cite{svm}. Larger values of C decrease the margin of the hyperplane which aims to increase the accuracy of the training. A smaller value for C increases the margin of the hyperplane, but carries the downside of more misclassified training data points. In \cite{svm} the optimal range for $C = 2^{-5}, 2^{-3}, ..., 2^{15}$. 
+
+
+
+\begin{enumerate}
+\item\textit{Cross-Validation} -- The feature dataset compiled after completing the feature extraction is used as input for the SVM. Where the dataset is divided into a training and testing dataset. The percentage of the split is dependent on how well the model performs with each split. A 60\% training and 40\% testing split was used for the SVM. Both these datasets should contain an equal distribution of the emotion labels in each dataset. This step ensures that all labels appear equally in both datasets. The Cross-validation score using a stratified K-fold of 3 is approximately 84\%. Cross-validation measures the overall performance of the SVM model on different training and testing data splits \cite{svm}. This tests the independence of the model to the dataset and helps to prevent overfitting in our model. K-fold cross-validation is done by splitting the dataset into K subsets of equal length. Each subset is then tested on the SVM model of the remaining K-1 subsets. Stratified K-fold cross-validation ensures that the classes are distributed equally in each subset. The training dataset is used as input for training our SVM and creating the SVM model that will be used in our system.\\
+
+\item\textit{Grid-Search} -- After optimizing the SVM model with grid-search a Linear Kernel with a C of 1 was used. Grid search helps to find the optimal parameters for the SVM model. Where C determines the extent to which the SVM model should avoid misclassification in the training \cite{svm}. Larger values of C decrease the margin of the hyperplane which aims to increase the accuracy of the training. A smaller value for C increases the margin of the hyperplane, but carries the downside of more misclassified training data points. In \cite{svm} it is recommended that the optimal range of  that should to be investigated in order to find the best value for $C$ is $C = 2^{-5}, 2^{-3}, ..., 2^{15}$. 
+\end{enumerate}
+
+
+
+
+
 
 \item \textbf{Emotion Classification} -- The testing dataset is used to asses the performance of the the trained SVM model on unseen data. Where the SVM model is given the testing dataset features without the corresponding labels. The results of the SVM model classification are then compared to the original labels to test the accuracy of the SVM model. The SVM model trained for our system has an overall accuracy score of 88.2\%.\\
-\item \textbf{Confusion Matrix} -- See Figure~\ref{fig:conf}, a confusion matrix summarises the outcomes of the classification based on the the actual labels of the testing data and those obtain from testing. The values obtained from the confusion matrix help with analyzing the SVM mode. Figure~\ref{fig:conf1} shows the confusion matrix for our SVM model. The diagonal starting at the top-left index till the bottom-right index contains all the true positives/negatives for our SVM model.
+%\begin{enumerate}
 
-\begin{figure}[H]
-\centering
-\begin{minipage}{.485\textwidth}
-  \centering
-  \includegraphics[width=.9\linewidth]{conf}
-  \captionof{figure}{Confusion Matrix}
-  \label{fig:conf}
-\end{minipage}%
-\begin{minipage}{.485\textwidth}
-  \centering
-  \includegraphics[width=.9\linewidth]{conf1}
-  \captionof{figure}{Confusion Matrix of SVM Model Classification}
-  \label{fig:conf1}
-\end{minipage}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\begin{minipage}{.485\textwidth}
+%  \centering
+%  \includegraphics[width=.9\linewidth]{conf}
+%  \captionof{figure}{Confusion Matrix}
+%  \label{fig:conf}
+%\end{minipage}%
+%\begin{minipage}{.485\textwidth}
+%  \centering
+%  \includegraphics[width=.9\linewidth]{conf1}
+%  \captionof{figure}{Confusion Matrix of SVM Model Classification}
+%  \label{fig:conf1}
+%\end{minipage}
+%\end{figure}
+%\end{enumerate}
  
-\end{itemize}
+\end{enumerate}
 
 \subsection{Low-Level View of Final System}
 The third low-level view shows how the process of Automatic Human Emotion Detection is streamlined for user interaction. Where classifications are performed live as the user changes their facial expressions. At this point we use the 'Trained SVM Model' with the HOG parameters from Table \ref{table:2} above.

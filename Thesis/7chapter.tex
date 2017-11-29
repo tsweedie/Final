@@ -1,16 +1,17 @@
-﻿\chapter{Code Documentation} % Chapter 2
+\chapter{Code Documentation} % Chapter 2
 %
 
 %\nocite{*}
 
 \section{Introduction} % a.
 This chapter includes all the source code used for implementing the Feature Extraction and SVM Training and Testing for the Automatic Human Emotion Detection system.
-\subsection*{Feature Extraction Python Code:}
+\subsection{Feature Extraction Python Code:}
 
     
 %\begin{frame}[fragile]
  %      \begin{listing}[H]
-        \begin{pythoncode}    
+%        \begin{pythoncode}    
+\begin{lstlisting}{language=python}    
 import sys
 import cv2
 import numpy as np
@@ -223,22 +224,22 @@ class FeatureExtraction():
 
 
 if __name__ == '__main__': FeatureExtraction().main()
-       \end{pythoncode}
+\end{lstlisting}%       \end{pythoncode}
 %        \caption{Viola Jones Face Detection and HOG Feature Extraction, including self implemented HOG}
 %    \end{listing}
 %\end{frame}
 
-\clearpage
-\subsection*{SVM Training and Testing Python Code:}
+ \clearpage
+\subsection{SVM Training and Testing Python Code:}
 %\begin{frame}[fragile]
       %\begin{listing}[H]
-        \begin{pythoncode}
-    
-  
+%        \begin{pythoncode}
+\begin{lstlisting}{language=python}    
 import sys
 import pandas as pd
 from sklearn import svm
-from sklearn.model_selection import GridSearchCV, cross_val_score, StratifiedKFold, train_test_split
+from sklearn.model_selection import GridSearchCV, cross_val_score, StratifiedKFold, 
+     train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 import pickle
 
@@ -329,7 +330,7 @@ class Tester():
         sys.stdout = orig_stdout
         print 'Done ^_^'
 if __name__ == '__main__': Tester().main()
-       \end{pythoncode}
+\end{lstlisting}%       \end{pythoncode}
 %        \caption{SVM Training, Testing and Model Selection \& Optimization}
 %    \end{listing}
 %\end{frame}
